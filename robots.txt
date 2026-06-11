@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yupum.allbarunclean.com/sitemap.xml
