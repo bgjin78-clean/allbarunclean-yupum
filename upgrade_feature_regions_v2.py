@@ -1,0 +1,542 @@
+from pathlib import Path
+from datetime import date
+import json
+
+BASE_URL = "https://yupum.allbarunclean.com"
+PHONE = "010-4393-2414"
+PHONE_LINK = "01043932414"
+
+FEATURE_REGIONS = [
+    ("서울", "강남구", "gangnam"),
+    ("서울", "송파구", "songpa"),
+    ("서울", "서초구", "seocho"),
+    ("서울", "마포구", "mapo"),
+    ("서울", "용산구", "yongsan"),
+    ("경기", "수원시", "suwon"),
+    ("경기", "성남시", "seongnam"),
+    ("경기", "용인시", "yongin"),
+    ("경기", "고양시", "goyang"),
+    ("경기", "화성시", "hwaseong"),
+    ("경기", "남양주시", "namyangju"),
+]
+
+RELATED = {
+    "gangnam": ["songpa", "seocho", "yongsan", "seongnam", "hanam", "gwangjin"],
+    "songpa": ["gangnam", "seocho", "hanam", "gwangjin", "seongnam", "gangdong"],
+    "seocho": ["gangnam", "songpa", "yongsan", "gwanak", "dongjak", "seongnam"],
+    "mapo": ["yongsan", "seodaemun", "eunpyeong", "yeongdeungpo", "jung", "gangseo"],
+    "yongsan": ["gangnam", "seocho", "mapo", "jung", "seongdong", "dongjak"],
+    "suwon": ["yongin", "hwaseong", "seongnam", "anyang", "osan", "gunpo"],
+    "seongnam": ["gangnam", "songpa", "yongin", "suwon", "hanam", "gwangju"],
+    "yongin": ["suwon", "seongnam", "hwaseong", "osan", "gwangju", "icheon"],
+    "goyang": ["paju", "gimpo", "mapo", "eunpyeong", "yangju", "uijeongbu"],
+    "hwaseong": ["suwon", "yongin", "osan", "pyeongtaek", "ansan", "siheung"],
+    "namyangju": ["guri", "hanam", "uijeongbu", "yangju", "gapyeong", "seongdong"],
+}
+
+REGION_NAMES = {
+    "gangnam": "강남구", "songpa": "송파구", "seocho": "서초구", "mapo": "마포구", "yongsan": "용산구",
+    "seongnam": "성남시", "hanam": "하남시", "gwangjin": "광진구", "gangdong": "강동구",
+    "gwanak": "관악구", "dongjak": "동작구", "seodaemun": "서대문구", "eunpyeong": "은평구",
+    "yeongdeungpo": "영등포구", "jung": "중구", "gangseo": "강서구", "seongdong": "성동구",
+    "suwon": "수원시", "yongin": "용인시", "hwaseong": "화성시", "anyang": "안양시",
+    "osan": "오산시", "gunpo": "군포시", "gwangju": "광주시", "icheon": "이천시",
+    "paju": "파주시", "gimpo": "김포시", "yangju": "양주시", "uijeongbu": "의정부시",
+    "pyeongtaek": "평택시", "ansan": "안산시", "siheung": "시흥시", "guri": "구리시",
+    "gapyeong": "가평군",
+}
+
+def related_links(slug):
+    return "\n".join(
+        f'<a href="/regions/{s}/">{REGION_NAMES.get(s, s)} 유품정리</a>'
+        for s in RELATED.get(slug, [])
+    )
+
+def schema(region_type, name, slug):
+    title = f"{name} 유품정리 · 고독사청소 · 특수청소 | 올바른수거"
+    desc = f"{name} 유품정리, 고독사청소, 특수청소 전문 상담. 유품 분류, 공간 정리, 소독, 폐기물 반출까지 안내합니다."
+    url = f"{BASE_URL}/regions/{slug}/"
+
+    data = [
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": f"{name} 유품정리 비용은 얼마부터인가요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "기본 유품정리는 45만원부터 안내하며, 물품 양, 공간 크기, 폐기물 반출량, 반출 환경, 특수청소 여부에 따라 달라질 수 있습니다."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": f"{name} 고독사청소도 함께 가능한가요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "가능합니다. 오염 정리, 소독, 냄새 저감, 폐기물 반출까지 현장 상황에 맞춰 진행합니다."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": f"{name} 유품정리 상담은 어떻게 진행되나요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "전화 또는 온라인 상담 접수 후 지역, 공간 형태, 작업 범위, 특수청소 필요 여부를 확인하고 안내드립니다."
+                    }
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": title,
+            "description": desc,
+            "author": {"@type": "Organization", "name": "올바른수거"},
+            "publisher": {"@type": "Organization", "name": "올바른수거"},
+            "mainEntityOfPage": url,
+            "dateModified": date.today().isoformat()
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "올바른수거",
+            "url": BASE_URL,
+            "telephone": PHONE,
+            "areaServed": f"{region_type} {name}",
+            "description": desc,
+            "priceRange": "450000KRW~"
+        }
+    ]
+
+    return "\n".join(
+        '<script type="application/ld+json">\n'
+        + json.dumps(item, ensure_ascii=False, indent=2)
+        + "\n</script>"
+        for item in data
+    )
+
+def page(region_type, name, slug):
+    title = f"{name} 유품정리 · 고독사청소 · 특수청소 | 올바른수거"
+    desc = f"올바른수거는 {name} 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다."
+
+    return f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{title}</title>
+  <meta name="description" content="{desc}" />
+  <meta name="keywords" content="{name} 유품정리, {name} 고독사청소, {name} 특수청소, {region_type} 유품정리, 서울 경기 유품정리, 올바른수거" />
+
+  <meta property="og:title" content="{title}" />
+  <meta property="og:description" content="{desc}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{BASE_URL}/regions/{slug}/" />
+
+  <link rel="icon" type="image/png" href="/favicon-allbarun.png" />
+  <link rel="apple-touch-icon" href="/favicon-allbarun.png" />
+
+{schema(region_type, name, slug)}
+
+  <style>
+    :root {{
+      --main:#365a4c; --sub:#61786b; --point:#c2a86f; --bg:#f1eee6;
+      --card:#fffaf1; --text:#26362f; --muted:#68776e; --line:#ddd4c5; --soft:#e6dfd2;
+    }}
+    * {{ box-sizing:border-box; }}
+    html {{ scroll-behavior:smooth; }}
+    body {{
+      margin:0; font-family:"Pretendard","Noto Sans KR",Arial,sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.75;
+    }}
+    a {{ color:inherit; text-decoration:none; }}
+    header {{
+      position:sticky; top:0; z-index:100; background:rgba(241,238,230,0.95);
+      border-bottom:1px solid var(--line); backdrop-filter:blur(10px);
+    }}
+    .nav {{
+      max-width:1180px; margin:0 auto; padding:16px 20px; display:flex;
+      justify-content:space-between; align-items:center; gap:16px;
+    }}
+    .logo {{ font-size:24px; font-weight:900; color:var(--main); }}
+    .call {{
+      background:var(--main); color:#fff; padding:10px 18px;
+      border-radius:999px; font-weight:900; white-space:nowrap;
+    }}
+    .hero {{
+      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82));
+      color:#fff; padding:98px 20px 84px;
+    }}
+    .wrap {{ max-width:1180px; margin:0 auto; }}
+    .badge {{
+      display:inline-block; background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.28); border-radius:999px;
+      padding:8px 15px; font-size:14px; margin-bottom:22px;
+    }}
+    h1 {{
+      font-size:46px; line-height:1.25; margin:0 0 22px; letter-spacing:-1.6px;
+    }}
+    .hero p {{
+      max-width:780px; font-size:18px; color:rgba(255,255,255,0.9); margin:0 0 32px;
+    }}
+    .btns {{ display:flex; flex-wrap:wrap; gap:12px; }}
+    .btn {{
+      display:inline-block; padding:14px 22px; border-radius:13px; font-weight:900;
+    }}
+    .btn-primary {{ background:var(--point); color:#26362f; }}
+    .btn-outline {{
+      color:#fff; border:1px solid rgba(255,255,255,0.38); background:rgba(255,255,255,0.13);
+    }}
+    section {{ padding:72px 20px; }}
+    .soft {{ background:var(--soft); }}
+    .title {{ margin-bottom:30px; }}
+    .title span {{ color:var(--point); font-weight:900; font-size:14px; }}
+    .title h2 {{
+      color:var(--main); font-size:32px; margin:8px 0 10px; letter-spacing:-1px;
+    }}
+    .title p {{ color:var(--muted); margin:0; }}
+    .grid {{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    }}
+    .card {{
+      background:var(--card); border:1px solid var(--line); border-radius:22px;
+      padding:28px; box-shadow:0 10px 28px rgba(54,90,76,0.07);
+    }}
+    .card strong {{
+      display:block; color:var(--main); font-size:20px; margin-bottom:10px;
+    }}
+    .card p {{ color:var(--muted); margin:0; }}
+    .content {{
+      background:var(--card); border:1px solid var(--line); border-radius:26px; padding:36px;
+    }}
+    .content h2, .content h3 {{ color:var(--main); letter-spacing:-0.6px; }}
+    .content p {{ color:var(--muted); margin-bottom:18px; }}
+    .price {{
+      font-size:38px; color:var(--main); font-weight:900; margin:10px 0;
+    }}
+    .price span {{ font-size:16px; color:var(--muted); }}
+    .case-box {{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    }}
+    .case-img {{
+      height:170px; background:#d8d0c3; border-radius:18px; display:flex;
+      align-items:center; justify-content:center; color:#68776e; font-weight:900; margin-bottom:16px;
+    }}
+    .related-links {{
+      display:flex; flex-wrap:wrap; gap:9px;
+    }}
+    .related-links a {{
+      background:#e9e1d3; color:#40584d; padding:8px 12px;
+      border-radius:999px; font-size:14px; font-weight:800;
+    }}
+    .contact {{
+      background:linear-gradient(135deg,#365a4c,#61786b); color:#fff;
+    }}
+    .contact-box {{
+      display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px;
+    }}
+    .contact h2 {{ font-size:34px; margin:0 0 14px; }}
+    .contact p {{ color:rgba(255,255,255,0.86); }}
+    form {{
+      background:var(--card); color:var(--text); border-radius:24px; padding:30px;
+    }}
+    input, select, textarea {{
+      width:100%; padding:14px; border:1px solid var(--line); border-radius:12px;
+      margin-bottom:14px; background:#fffdf8; font-size:15px;
+    }}
+    textarea {{ min-height:120px; resize:vertical; }}
+    .agree {{
+      display:flex; gap:10px; color:var(--muted); font-size:14px; margin:4px 0 18px;
+    }}
+    .agree input {{ width:auto; margin-top:6px; }}
+    button {{
+      width:100%; border:none; background:var(--main); color:#fff; padding:15px;
+      border-radius:12px; font-size:17px; font-weight:900; cursor:pointer;
+    }}
+    footer {{ background:#dcd4c6; color:#4d5d54; padding:38px 20px; }}
+    .footer-inner {{
+      max-width:1180px; margin:0 auto; display:flex; justify-content:space-between;
+      flex-wrap:wrap; gap:20px;
+    }}
+    .floating {{
+      position:fixed; right:18px; bottom:18px; background:var(--main); color:#fff;
+      padding:14px 18px; border-radius:999px; font-weight:900;
+      box-shadow:0 12px 30px rgba(54,90,76,0.28);
+    }}
+    @media(max-width:900px) {{
+      h1 {{ font-size:34px; }}
+      .grid, .case-box, .contact-box {{ grid-template-columns:1fr; }}
+      .floating {{ left:18px; right:18px; text-align:center; }}
+    }}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="logo">올바른수거</a>
+    <a href="tel:{PHONE_LINK}" class="call">{PHONE}</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="badge">{region_type} {name} 대표 유품정리 지역</div>
+      <h1>{name} 유품정리,<br />고독사청소와 특수청소까지</h1>
+      <p>
+        올바른수거는 {name} 지역에서 유품정리, 고독사청소, 특수청소를 상담합니다.
+        유품 분류부터 공간 정리, 오염 정리, 소독, 폐기물 반출까지 상황에 맞춰 차분하게 도와드립니다.
+      </p>
+      <div class="btns">
+        <a href="#contact" class="btn btn-primary">상담 접수하기</a>
+        <a href="tel:{PHONE_LINK}" class="btn btn-outline">전화 상담 {PHONE}</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="title">
+        <span>SERVICE</span>
+        <h2>{name} 유품정리 서비스</h2>
+        <p>현장 상황에 따라 유품정리, 고독사청소, 특수청소를 함께 안내드립니다.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <strong>유품정리</strong>
+          <p>보관할 물품, 중요 서류, 정리 대상 물품을 구분하고 공간을 정돈합니다.</p>
+        </div>
+        <div class="card">
+          <strong>고독사청소</strong>
+          <p>오염 정리, 소독, 냄새 저감, 폐기물 반출까지 현장에 맞춰 진행합니다.</p>
+        </div>
+        <div class="card">
+          <strong>특수청소</strong>
+          <p>일반 청소로 어려운 오염 공간과 장기간 방치된 공간을 정리합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <div class="title">
+        <span>PRICE</span>
+        <h2>{name} 유품정리 비용 안내</h2>
+        <p>아래 금액은 기본 시작 가격이며, 현장 환경과 작업 범위에 따라 달라질 수 있습니다.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <strong>유품정리</strong>
+          <div class="price">45만원 <span>부터~</span></div>
+          <p>유품 분류와 공간 정리 기준 시작 금액입니다.</p>
+        </div>
+        <div class="card">
+          <strong>고독사 특수청소</strong>
+          <div class="price">80만원 <span>부터~</span></div>
+          <p>오염 정리, 소독, 냄새 저감이 필요한 경우입니다.</p>
+        </div>
+        <div class="card">
+          <strong>특수청소</strong>
+          <div class="price">상담 후 <span>안내</span></div>
+          <p>오염도와 작업 범위에 따라 비용이 달라집니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="content">
+        <h2>{name} 유품정리, 신중한 정리가 필요한 이유</h2>
+        <p>
+          {name} 유품정리는 단순히 물건을 치우는 일이 아니라 남겨진 물품을 확인하고,
+          가족분들이 필요한 물품을 분류하며 공간을 다시 정돈하는 과정입니다.
+          갑작스러운 상황에서는 어디서부터 시작해야 할지 막막할 수 있기 때문에
+          현장 상황을 차분히 확인하고 필요한 작업을 나누어 진행하는 것이 중요합니다.
+        </p>
+        <p>
+          아파트, 오피스텔, 빌라, 단독주택, 원룸 등 주거 형태에 따라 작업 방식은 달라질 수 있습니다.
+          물품의 양, 폐기물 반출량, 엘리베이터 유무, 주차 가능 여부에 따라 작업 시간과 비용도 달라집니다.
+        </p>
+        <p>
+          올바른수거는 {name} 지역에서 유품정리, 고독사청소, 특수청소 상담을 진행하며
+          현장 상황을 확인한 뒤 필요한 작업 범위와 일정을 안내합니다.
+        </p>
+
+        <h3>{name} 유품정리 비용은 어떻게 결정될까요?</h3>
+        <p>
+          유품정리 비용은 공간의 크기만으로 정해지지 않습니다. 정리할 유품의 양,
+          폐기물 반출량, 가구와 가전의 크기, 주차 환경, 건물 구조, 특수청소 여부가 함께 반영됩니다.
+          특히 공동주택이나 오피스텔은 반출 동선과 엘리베이터 사용 여부가 작업 시간에 영향을 줄 수 있습니다.
+        </p>
+
+        <h3>유품정리 전 확인하면 좋은 내용</h3>
+        <p>
+          작업 전에는 보관해야 할 물품, 중요 서류, 통장, 도장, 사진, 귀중품 등을 가능한 범위에서 먼저 확인하는 것이 좋습니다.
+          직접 확인이 어려운 경우에는 작업 전 상담을 통해 분류 기준을 정하고, 현장에서 발견되는 주요 물품은 별도로 안내받는 방식으로 진행할 수 있습니다.
+        </p>
+
+        <h3>고독사청소와 특수청소가 필요한 경우</h3>
+        <p>
+          고독사청소나 특수청소가 필요한 현장은 일반적인 정리보다 더 신중한 절차가 필요합니다.
+          오염 정리, 소독, 냄새 저감, 폐기물 반출을 단계적으로 진행해야 하며
+          주변 공간에 영향을 주지 않도록 현장 상태를 먼저 확인하는 것이 중요합니다.
+        </p>
+
+        <h3>{name} 지역에서 상담이 많은 사례</h3>
+        <p>
+          {name} 지역에서는 아파트, 빌라, 오피스텔, 원룸 등 다양한 주거 형태에서 유품정리 상담이 들어옵니다.
+          장기간 비어 있던 공간, 가족이 직접 정리하기 어려운 공간, 폐기물 반출이 많은 공간, 냄새나 오염으로 일반 청소가 어려운 공간은
+          전문적인 절차에 따라 정리하는 것이 안전합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <div class="title">
+        <span>PROCESS</span>
+        <h2>{name} 유품정리 진행 과정</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card"><strong>1. 상담 접수</strong><p>지역, 공간 형태, 필요한 서비스를 확인합니다.</p></div>
+        <div class="card"><strong>2. 현장 확인</strong><p>물품의 양, 반출 환경, 오염 여부를 확인합니다.</p></div>
+        <div class="card"><strong>3. 유품 분류</strong><p>보관품, 중요 서류, 정리 대상 물품을 구분합니다.</p></div>
+        <div class="card"><strong>4. 정리 작업</strong><p>공간별 정리와 폐기물 반출을 진행합니다.</p></div>
+        <div class="card"><strong>5. 청소·소독</strong><p>필요 시 특수청소와 소독을 함께 진행합니다.</p></div>
+        <div class="card"><strong>6. 마무리 확인</strong><p>작업 완료 후 현장을 확인하고 안내드립니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="title">
+        <span>CASE</span>
+        <h2>{name} 유품정리 작업 사례</h2>
+        <p>실제 작업 사진은 추후 작업 전후 이미지로 교체하면 됩니다.</p>
+      </div>
+
+      <div class="case-box">
+        <div class="card">
+          <div class="case-img">작업 사진 자리</div>
+          <strong>유품 분류 및 정리</strong>
+          <p>보관할 물품과 정리할 물품을 구분하고 공간 전체를 정돈한 사례입니다.</p>
+        </div>
+        <div class="card">
+          <div class="case-img">작업 사진 자리</div>
+          <strong>고독사청소 현장</strong>
+          <p>오염 정리, 소독, 냄새 저감 작업을 함께 진행한 사례입니다.</p>
+        </div>
+        <div class="card">
+          <div class="case-img">작업 사진 자리</div>
+          <strong>특수청소 마무리</strong>
+          <p>장기간 방치된 공간을 정리하고 소독 작업을 진행한 사례입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <div class="title">
+        <span>REGION</span>
+        <h2>함께 확인하면 좋은 지역</h2>
+        <p>{name} 인근 및 서울·경기 주요 지역 유품정리 안내입니다.</p>
+      </div>
+      <div class="related-links">
+        {related_links(slug)}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-box">
+      <div>
+        <h2>{name} 유품정리 상담</h2>
+        <p>성함, 연락처, 지역, 필요한 서비스를 남겨주시면 확인 후 연락드립니다.</p>
+        <a href="tel:{PHONE_LINK}" class="btn btn-outline">{PHONE}</a>
+      </div>
+
+      <form onsubmit="return checkPrivacy();">
+        <select required>
+          <option value="">필요한 서비스를 선택하세요</option>
+          <option>{name} 유품정리</option>
+          <option>{name} 고독사청소</option>
+          <option>{name} 특수청소</option>
+          <option>{name} 유품정리 + 특수청소</option>
+        </select>
+
+        <input type="text" placeholder="성함" required />
+        <input type="tel" placeholder="연락처" required />
+        <input type="text" value="{name}" required />
+        <textarea placeholder="상담 내용을 간단히 적어주세요"></textarea>
+
+        <label class="agree">
+          <input type="checkbox" id="privacyCheck" />
+          <span>개인정보 수집 및 이용에 동의합니다. 수집항목은 성함, 연락처, 지역, 상담내용이며 상담 및 견적 안내 목적으로만 사용됩니다.</span>
+        </label>
+
+        <button type="submit">상담 신청하기</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>올바른수거</strong><br />
+      {name} 유품정리 · 고독사청소 · 특수청소
+    </div>
+    <div>
+      대표 상담 : <a href="tel:{PHONE_LINK}">{PHONE}</a><br />
+      메인 : <a href="/">yupum.allbarunclean.com</a>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:{PHONE_LINK}" class="floating">전화 상담 {PHONE}</a>
+
+<script>
+  function checkPrivacy() {{
+    const checked = document.getElementById("privacyCheck").checked;
+
+    if (!checked) {{
+      alert("개인정보 수집 및 이용 동의가 필요합니다.");
+      return false;
+    }}
+
+    alert("상담 신청이 확인되었습니다. EmailJS 연결 코드를 적용해 주세요.");
+    return false;
+  }}
+</script>
+
+</body>
+</html>
+"""
+
+def generate():
+    root = Path(__file__).resolve().parent
+
+    for region_type, name, slug in FEATURE_REGIONS:
+        folder = root / "regions" / slug
+        folder.mkdir(parents=True, exist_ok=True)
+
+        (folder / "index.html").write_text(page(region_type, name, slug), encoding="utf-8")
+        print(f"V2 업그레이드 완료: {name} /regions/{slug}/")
+
+    print(f"\n완료: 대표지역 {len(FEATURE_REGIONS)}개 V2 업그레이드")
+
+if __name__ == "__main__":
+    generate()

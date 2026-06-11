@@ -13,7 +13,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yupum.allbarunclean.com/regions/goyang/" />
 
-  <link rel="icon" href="/favicon-allbarun.png" />
+  <link rel="icon" type="image/png" href="/favicon-allbarun.png" />
+  <link rel="apple-touch-icon" href="/favicon-allbarun.png" />
 
 <script type="application/ld+json">
 {
@@ -22,15 +23,15 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "고양시 유품정리 비용은 어떻게 정해지나요?",
+      "name": "고양시 유품정리 비용은 얼마부터인가요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "유품의 양, 공간 크기, 폐기물 반출량, 엘리베이터 유무, 주차 환경, 특수청소 필요 여부에 따라 달라집니다."
+        "text": "기본 유품정리는 45만원부터 안내하며, 물품 양, 공간 크기, 폐기물 반출량, 반출 환경, 특수청소 여부에 따라 달라질 수 있습니다."
       }
     },
     {
       "@type": "Question",
-      "name": "고양시 고독사청소도 가능한가요?",
+      "name": "고양시 고독사청소도 함께 가능한가요?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "가능합니다. 오염 정리, 소독, 냄새 저감, 폐기물 반출까지 현장 상황에 맞춰 진행합니다."
@@ -41,15 +42,7 @@
       "name": "고양시 유품정리 상담은 어떻게 진행되나요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "전화 또는 온라인 상담 접수 후 지역, 현장 상황, 필요한 서비스 범위를 확인하고 안내드립니다."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "고양시 유품정리와 특수청소를 함께 맡길 수 있나요?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "현장 상황에 따라 유품정리와 고독사청소, 특수청소를 함께 진행할 수 있습니다."
+        "text": "전화 또는 온라인 상담 접수 후 지역, 공간 형태, 작업 범위, 특수청소 필요 여부를 확인하고 안내드립니다."
       }
     }
   ]
@@ -60,7 +53,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "고양시 유품정리 · 고독사청소 · 특수청소 | 올바른수거",
-  "description": "올바른수거는 고양시 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 정리, 소독, 폐기물 반출까지 상담 가능합니다.",
+  "description": "고양시 유품정리, 고독사청소, 특수청소 전문 상담. 유품 분류, 공간 정리, 소독, 폐기물 반출까지 안내합니다.",
   "author": {
     "@type": "Organization",
     "name": "올바른수거"
@@ -70,7 +63,7 @@
     "name": "올바른수거"
   },
   "mainEntityOfPage": "https://yupum.allbarunclean.com/regions/goyang/",
-  "dateModified": "2026-06-10"
+  "dateModified": "2026-06-11"
 }
 </script>
 <script type="application/ld+json">
@@ -81,7 +74,7 @@
   "url": "https://yupum.allbarunclean.com",
   "telephone": "010-4393-2414",
   "areaServed": "경기 고양시",
-  "description": "올바른수거는 고양시 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 정리, 소독, 폐기물 반출까지 상담 가능합니다.",
+  "description": "고양시 유품정리, 고독사청소, 특수청소 전문 상담. 유품 분류, 공간 정리, 소독, 폐기물 반출까지 안내합니다.",
   "priceRange": "450000KRW~"
 }
 </script>
@@ -163,9 +156,96 @@
       font-size:38px; color:var(--main); font-weight:900; margin:10px 0;
     }
     .price span { font-size:16px; color:var(--muted); }
+
+    .case-timeline {
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+    }
+
+    .case-step {
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:28px;
+      align-items:center;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:28px;
+      box-shadow:0 10px 28px rgba(54,90,76,0.07);
+    }
+
+    .case-step.reverse {
+      grid-template-columns:1.1fr 0.9fr;
+    }
+
+    .case-step.reverse .case-text {
+      order:2;
+    }
+
+    .case-step.reverse img {
+      order:1;
+    }
+
+    .case-step img {
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      border-radius:20px;
+      display:block;
+      background:#d8d0c3;
+    }
+
+    .case-text b {
+      display:inline-block;
+      color:var(--point);
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    .case-text h3 {
+      color:var(--main);
+      font-size:26px;
+      margin:0 0 12px;
+      letter-spacing:-0.8px;
+    }
+
+    .case-text p {
+      color:var(--muted);
+      margin:0;
+    }
+
+    @media(max-width:900px) {
+      .case-step,
+      .case-step.reverse {
+        grid-template-columns:1fr;
+      }
+
+      .case-step.reverse .case-text,
+      .case-step.reverse img {
+        order:initial;
+      }
+
+      .case-step img {
+        height:240px;
+      }
+    }
+
     .case-box {
       display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
     }
+
+    .case-photo {
+      width:100%;
+      height:210px;
+      object-fit:cover;
+      border-radius:18px;
+      display:block;
+      margin-bottom:16px;
+      background:#d8d0c3;
+    }
+
     .case-img {
       height:170px; background:#d8d0c3; border-radius:18px; display:flex;
       align-items:center; justify-content:center; color:#68776e; font-weight:900; margin-bottom:16px;
@@ -323,11 +403,24 @@
           특히 공동주택이나 오피스텔은 반출 동선과 엘리베이터 사용 여부가 작업 시간에 영향을 줄 수 있습니다.
         </p>
 
+        <h3>유품정리 전 확인하면 좋은 내용</h3>
+        <p>
+          작업 전에는 보관해야 할 물품, 중요 서류, 통장, 도장, 사진, 귀중품 등을 가능한 범위에서 먼저 확인하는 것이 좋습니다.
+          직접 확인이 어려운 경우에는 작업 전 상담을 통해 분류 기준을 정하고, 현장에서 발견되는 주요 물품은 별도로 안내받는 방식으로 진행할 수 있습니다.
+        </p>
+
         <h3>고독사청소와 특수청소가 필요한 경우</h3>
         <p>
           고독사청소나 특수청소가 필요한 현장은 일반적인 정리보다 더 신중한 절차가 필요합니다.
           오염 정리, 소독, 냄새 저감, 폐기물 반출을 단계적으로 진행해야 하며
           주변 공간에 영향을 주지 않도록 현장 상태를 먼저 확인하는 것이 중요합니다.
+        </p>
+
+        <h3>고양시 지역에서 상담이 많은 사례</h3>
+        <p>
+          고양시 지역에서는 아파트, 빌라, 오피스텔, 원룸 등 다양한 주거 형태에서 유품정리 상담이 들어옵니다.
+          장기간 비어 있던 공간, 가족이 직접 정리하기 어려운 공간, 폐기물 반출이 많은 공간, 냄새나 오염으로 일반 청소가 어려운 공간은
+          전문적인 절차에 따라 정리하는 것이 안전합니다.
         </p>
       </div>
     </div>
@@ -356,28 +449,52 @@
       <div class="title">
         <span>CASE</span>
         <h2>고양시 유품정리 작업 사례</h2>
-        <p>실제 작업 사진은 추후 작업 전후 이미지로 교체하면 됩니다.</p>
+        <p>현장 확인부터 소독·연무 작업, 정리 완료까지 단계별로 신중하게 진행합니다.</p>
       </div>
 
-      <div class="case-box">
-        <div class="card">
-          <div class="case-img">작업 사진 자리</div>
-          <strong>유품 분류 및 정리</strong>
-          <p>보관할 물품과 정리할 물품을 구분하고 공간 전체를 정돈한 사례입니다.</p>
+      <div class="case-timeline">
+        <div class="case-step">
+          <div class="case-text">
+            <b>STEP 01</b>
+            <h3>작업 전 현장 확인</h3>
+            <p>
+              유품의 양, 보관이 필요한 물품, 폐기물 반출 범위, 건물 구조와 이동 동선을 먼저 확인합니다.
+              현장 상황을 확인한 뒤 필요한 작업 인원과 절차를 안내합니다.
+            </p>
+          </div>
+          <img src="/image/cases/before-09.jpg" alt="고양시 유품정리 작업 전 현장">
         </div>
-        <div class="card">
-          <div class="case-img">작업 사진 자리</div>
-          <strong>고독사청소 현장</strong>
-          <p>오염 정리, 소독, 냄새 저감 작업을 함께 진행한 사례입니다.</p>
+
+        <div class="case-step reverse">
+          <div class="case-text">
+            <b>STEP 02</b>
+            <h3>소독·연무 작업 과정</h3>
+            <p>
+              고독사청소나 특수청소가 필요한 경우 오염 정리 후 소독과 냄새 저감 작업을 함께 진행합니다.
+              공간 상태에 따라 연무 작업과 마무리 소독을 단계적으로 진행합니다.
+            </p>
+          </div>
+          <img src="/image/cases/process-09.jpg" alt="고양시 유품정리 소독 연무 작업 과정">
         </div>
-        <div class="card">
-          <div class="case-img">작업 사진 자리</div>
-          <strong>특수청소 마무리</strong>
-          <p>장기간 방치된 공간을 정리하고 소독 작업을 진행한 사례입니다.</p>
+
+        <div class="case-step">
+          <div class="case-text">
+            <b>STEP 03</b>
+            <h3>작업 후 정리 완료</h3>
+            <p>
+              유품 분류와 폐기물 반출 후 공간을 정돈하고 마무리 확인을 진행합니다.
+              가족분들이 확인해야 할 물품은 별도로 구분하여 안내드립니다.
+            </p>
+          </div>
+          <img src="/image/cases/after-09.jpg" alt="고양시 유품정리 작업 후 정리 완료">
         </div>
       </div>
     </div>
   </section>
+
+
+
+
 
   <section class="soft">
     <div class="wrap">
