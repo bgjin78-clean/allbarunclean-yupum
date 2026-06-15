@@ -692,7 +692,11 @@
 
 <a href="tel:01043932414" class="floating">전화 상담 010-4393-2414</a>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+  emailjs.init("JKsVOKPtnWHIr2BCV");
+
   function checkPrivacy() {
     const checked = document.getElementById("privacyCheck").checked;
 
@@ -701,10 +705,31 @@
       return false;
     }
 
-    alert("상담 신청이 확인되었습니다. EmailJS 연결 코드를 적용해 주세요.");
+    const form = document.querySelector("form");
+    const inputs = form.querySelectorAll("input");
+
+    const params = {
+      service: form.querySelector("select").value,
+      name: inputs[0].value,
+      phone: inputs[1].value,
+      region: inputs[2].value,
+      message: form.querySelector("textarea").value
+    };
+
+    emailjs.send("allbarunclean-waste", "template_b4ox5js", params)
+      .then(function () {
+        alert("상담 신청이 접수되었습니다. 확인 후 연락드리겠습니다.");
+        form.reset();
+      })
+      .catch(function (error) {
+        console.error("EmailJS 오류:", error);
+        alert("접수 중 오류가 발생했습니다. 전화 상담을 이용해 주세요.");
+      });
+
     return false;
   }
 </script>
+
 
 </body>
 </html>
