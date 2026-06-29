@@ -22,7 +22,7 @@ def case_section(region_name, before_num, process_num, after_num):
             <h3>작업 전 현장 확인</h3>
             <p>유품의 양, 보관 물품, 폐기물 반출 범위와 이동 동선을 확인합니다.</p>
           </div>
-          <img src="/image/cases/before-{b}.jpg" alt="{region_name} 유품정리 작업 전 현장">
+          <img src="/image/main/before-{b}.jpg" alt="{region_name} 유품정리 작업 전 현장">
         </div>
 
         <div class="case-step reverse">
@@ -31,7 +31,7 @@ def case_section(region_name, before_num, process_num, after_num):
             <h3>소독·연무 작업 과정</h3>
             <p>필요한 경우 오염 정리 후 소독과 냄새 저감 작업을 함께 진행합니다.</p>
           </div>
-          <img src="/image/cases/process-{p}.jpg" alt="{region_name} 유품정리 소독 연무 작업 과정">
+          <img src="/image/main/process-{p}.jpg" alt="{region_name} 유품정리 소독 연무 작업 과정">
         </div>
 
         <div class="case-step">
@@ -40,7 +40,7 @@ def case_section(region_name, before_num, process_num, after_num):
             <h3>작업 후 정리 완료</h3>
             <p>유품 분류와 폐기물 반출 후 공간을 정돈하고 마무리 확인을 진행합니다.</p>
           </div>
-          <img src="/image/cases/after-{a}.jpg" alt="{region_name} 유품정리 작업 후 정리 완료">
+          <img src="/image/main/after-{a}.jpg" alt="{region_name} 유품정리 작업 후 정리 완료">
         </div>
       </div>
     </div>

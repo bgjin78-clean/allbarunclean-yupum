@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>서울 경기 유품정리 · 고독사청소 · 특수청소 | 올바른수거</title>
-  <meta name="description" content="올바른수거는 서울·경기 전 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 공간 정리, 오염 정리, 소독, 폐기물 반출까지 차분하고 책임감 있게 도와드립니다." />
-  <meta name="keywords" content="서울 유품정리, 경기 유품정리, 서울 고독사청소, 경기 고독사청소, 서울 특수청소, 경기 특수청소, 올바른수거" />
+  <title>서울 경기 유품정리 · 고독사청소 · 특수청소 | 올바른 유품정리</title>
+  <meta name="description" content="올바른 유품정리는 서울·경기 전 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 공간 정리, 오염 정리, 소독, 폐기물 반출까지 차분하고 책임감 있게 도와드립니다." />
+  <meta name="keywords" content="서울 유품정리, 경기 유품정리, 서울 고독사청소, 경기 고독사청소, 서울 특수청소, 경기 특수청소, 올바른 유품정리" />
 
-  <meta property="og:title" content="서울 경기 유품정리 전문 | 올바른수거" />
+  <meta property="og:title" content="서울 경기 유품정리 전문 | 올바른 유품정리" />
   <meta property="og:description" content="서울·경기 유품정리, 고독사청소, 특수청소 전문 상담. 유품 분류부터 정리, 청소, 소독까지 책임감 있게 진행합니다." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yupum.allbarunclean.com/" />
@@ -62,7 +62,7 @@
     }
 
     .logo {
-      font-size:24px;
+      font-size:22px;
       font-weight:900;
       color:var(--main);
       letter-spacing:-0.8px;
@@ -70,8 +70,9 @@
 
     .nav-links {
       display:flex;
-      gap:20px;
-      font-size:15px;
+      flex-wrap:wrap;
+      gap:16px;
+      font-size:14px;
       font-weight:700;
       color:var(--muted);
     }
@@ -83,20 +84,18 @@
       border-radius:999px;
       font-weight:900;
       white-space:nowrap;
+      font-size:14px;
     }
 
     .hero {
-      padding:112px 20px 96px;
+      padding:96px 20px 88px;
       color:#fff;
       background:
         linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)),
         url("yupum-main.png") center/cover no-repeat;
     }
 
-    .hero-inner {
-      max-width:1180px;
-      margin:0 auto;
-    }
+    .hero-inner { max-width:1180px; margin:0 auto; }
 
     .badge {
       display:inline-block;
@@ -110,7 +109,7 @@
 
     .hero h1 {
       margin:0 0 22px;
-      font-size:48px;
+      font-size:46px;
       line-height:1.22;
       letter-spacing:-1.7px;
     }
@@ -126,6 +125,7 @@
       display:flex;
       flex-wrap:wrap;
       gap:12px;
+      margin-bottom:40px;
     }
 
     .btn {
@@ -135,29 +135,43 @@
       font-weight:900;
     }
 
-    .btn-primary {
-      background:var(--point);
-      color:#26362f;
-    }
-
+    .btn-primary { background:var(--point); color:#26362f; }
     .btn-outline {
       color:#fff;
       border:1px solid rgba(255,255,255,0.38);
       background:rgba(255,255,255,0.13);
     }
 
-    section {
-      padding:78px 20px;
+    .hero-stats {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      max-width:820px;
     }
 
-    .wrap {
-      max-width:1180px;
-      margin:0 auto;
+    .hero-stat {
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.22);
+      border-radius:18px;
+      padding:18px 20px;
     }
 
-    .title {
-      margin-bottom:34px;
+    .hero-stat strong {
+      display:block;
+      font-size:22px;
+      margin-bottom:4px;
+      letter-spacing:-0.5px;
     }
+
+    .hero-stat span {
+      font-size:14px;
+      color:rgba(255,255,255,0.82);
+    }
+
+    section { padding:78px 20px; }
+    .wrap { max-width:1180px; margin:0 auto; }
+
+    .title { margin-bottom:34px; }
 
     .title span {
       color:var(--point);
@@ -174,104 +188,170 @@
       letter-spacing:-1px;
     }
 
-    .title p {
-      margin:0;
-      color:var(--muted);
-    }
-
-    .intro-box {
-      display:grid;
-      grid-template-columns:1.1fr 0.9fr;
-      gap:28px;
-    }
-
-    .intro-main,
-    .intro-side {
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:34px;
-      box-shadow:0 12px 34px rgba(54,90,76,0.08);
-    }
-
-    .intro-main h2 {
-      color:var(--main);
-      font-size:30px;
-      margin:0 0 16px;
-      letter-spacing:-1px;
-    }
-
-    .intro-main p,
-    .intro-side p {
-      color:var(--muted);
-      margin:0 0 16px;
-    }
-
-    .intro-side strong {
-      display:block;
-      color:var(--main);
-      margin-bottom:8px;
-      font-size:19px;
-    }
+    .title p { margin:0; color:var(--muted); }
 
     .service-grid {
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
     }
 
     .service-card {
       background:var(--card);
       border:1px solid var(--line);
       border-radius:24px;
-      padding:30px;
+      padding:26px 22px;
       box-shadow:0 10px 28px rgba(54,90,76,0.07);
     }
 
-    .service-card b {
-      color:var(--point);
-      font-size:14px;
-    }
+    .service-card b { color:var(--point); font-size:13px; }
 
     .service-card h3 {
       margin:8px 0 12px;
       color:var(--main);
-      font-size:24px;
+      font-size:20px;
+      line-height:1.35;
     }
 
-    .service-card p {
-      margin:0;
-      color:var(--muted);
-    }
+    .service-card p { margin:0; color:var(--muted); font-size:15px; }
 
-    .process {
+    .pricing-highlight {
       background:var(--soft);
     }
 
+    .pricing-box {
+      display:grid;
+      grid-template-columns:0.85fr 1.15fr;
+      gap:32px;
+      align-items:center;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:40px;
+      box-shadow:0 12px 34px rgba(54,90,76,0.08);
+    }
+
+    .pricing-big {
+      font-size:52px;
+      font-weight:900;
+      color:var(--main);
+      letter-spacing:-2px;
+      margin:0 0 12px;
+    }
+
+    .pricing-big span {
+      font-size:18px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .pricing-box > div:first-child p {
+      color:var(--muted);
+      margin:0;
+    }
+
+    .check-list {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .check-list li {
+      color:var(--text);
+      font-weight:700;
+      padding-left:28px;
+      position:relative;
+    }
+
+    .check-list li::before {
+      content:"✓";
+      position:absolute;
+      left:0;
+      color:var(--main);
+      font-weight:900;
+    }
+
+    .factor-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .factor-card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px 24px;
+    }
+
+    .factor-card b {
+      display:block;
+      color:var(--point);
+      font-size:28px;
+      margin-bottom:12px;
+    }
+
+    .factor-card h3 {
+      margin:0 0 10px;
+      color:var(--main);
+      font-size:19px;
+    }
+
+    .factor-card p {
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .intro-block {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:40px;
+      box-shadow:0 10px 28px rgba(54,90,76,0.07);
+    }
+
+    .intro-block h2 {
+      color:var(--main);
+      font-size:28px;
+      margin:0 0 18px;
+      letter-spacing:-0.8px;
+      line-height:1.35;
+    }
+
+    .intro-block p {
+      color:var(--muted);
+      margin:0 0 16px;
+    }
+
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .process { background:var(--soft); }
+
     .steps {
       display:grid;
-      grid-template-columns:repeat(6,1fr);
-      gap:14px;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
     }
 
     .step {
       background:var(--card);
       border:1px solid var(--line);
       border-radius:18px;
-      padding:22px 16px;
-      min-height:134px;
+      padding:26px 22px;
+      min-height:150px;
     }
 
-    .step b {
-      color:var(--point);
-      font-size:13px;
-    }
+    .step b { color:var(--point); font-size:13px; }
 
     .step strong {
       display:block;
       margin-top:8px;
       color:var(--main);
-      font-size:17px;
+      font-size:18px;
     }
 
     .step p {
@@ -281,102 +361,134 @@
       line-height:1.55;
     }
 
-    .pricing {
-      background:var(--soft);
-    }
-
-    .price-note {
-      display:block;
-      text-align:right;
-      color:#365a4c;
-      font-size:14px;
-      font-weight:800;
-      margin:-8px 0 30px;
-    }
-
-    .price-grid {
+    .photo-grid {
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:22px;
+      gap:18px;
     }
 
-    .price-card {
+    .photo-card {
       background:var(--card);
       border:1px solid var(--line);
       border-radius:22px;
-      padding:30px;
-      box-shadow:0 10px 24px rgba(54,90,76,0.08);
-    }
-
-    .price-card strong {
-      display:block;
-      color:var(--main);
-      margin-bottom:14px;
-      font-size:18px;
-    }
-
-    .price {
-      font-size:42px;
-      color:var(--main);
-      font-weight:900;
-      margin-bottom:12px;
-      letter-spacing:-1px;
-    }
-
-    .price span {
-      font-size:17px;
-      color:var(--muted);
-      font-weight:700;
-    }
-
-    .price-card p {
-      color:var(--muted);
-      margin:0;
-    }
-
-    .case-grid {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .case-card {
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:24px;
       overflow:hidden;
       box-shadow:0 10px 28px rgba(54,90,76,0.07);
     }
 
-    .case-img {
-      height:190px;
-      background:#d8d0c3;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#69786f;
-      font-weight:900;
-    }
-
-    .case-card div:last-child {
-      padding:22px;
-    }
-
-    .case-card strong {
-      color:var(--main);
+    .photo-card img {
+      width:100%;
+      height:240px;
+      object-fit:cover;
       display:block;
-      margin-bottom:8px;
+      background:#d8d0c3;
+    }
+
+    .photo-card div {
+      padding:18px 20px;
+    }
+
+    .photo-card h3 {
+      margin:0;
+      color:var(--main);
       font-size:18px;
     }
 
-    .case-card p {
-      color:var(--muted);
-      margin:0;
+    .review-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
 
-    .area {
-      background:var(--soft);
+    .review-card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:26px;
+      box-shadow:0 10px 28px rgba(54,90,76,0.07);
+      display:flex;
+      flex-direction:column;
     }
+
+    .review-tag {
+      display:inline-block;
+      background:#e9e1d3;
+      color:#40584d;
+      padding:5px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:14px;
+      align-self:flex-start;
+    }
+
+    .review-card h3 {
+      margin:0 0 10px;
+      color:var(--main);
+      font-size:19px;
+      line-height:1.4;
+    }
+
+    .review-card p {
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:15px;
+      flex:1;
+    }
+
+    .review-link {
+      color:var(--main);
+      font-weight:900;
+      font-size:15px;
+    }
+
+    .review-more {
+      text-align:center;
+      margin-top:28px;
+    }
+
+    .review-more a {
+      display:inline-block;
+      padding:14px 28px;
+      background:var(--main);
+      color:#fff;
+      border-radius:999px;
+      font-weight:900;
+    }
+
+    .testimonial-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .testimonial {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:26px;
+    }
+
+    .stars {
+      color:var(--point);
+      font-size:16px;
+      letter-spacing:2px;
+      margin-bottom:12px;
+    }
+
+    .testimonial p {
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .testimonial cite {
+      font-style:normal;
+      color:var(--main);
+      font-weight:800;
+      font-size:14px;
+    }
+
+    .area { background:var(--soft); }
 
     .area-grid {
       display:grid;
@@ -431,8 +543,18 @@
       letter-spacing:-1px;
     }
 
-    .contact-info p {
-      color:rgba(255,255,255,0.87);
+    .contact-info p { color:rgba(255,255,255,0.87); }
+
+    .contact-bullets {
+      list-style:none;
+      margin:20px 0 0;
+      padding:0;
+    }
+
+    .contact-bullets li {
+      margin-bottom:8px;
+      color:rgba(255,255,255,0.9);
+      font-weight:700;
     }
 
     .phone-large {
@@ -466,10 +588,7 @@
       color:var(--text);
     }
 
-    textarea {
-      min-height:120px;
-      resize:vertical;
-    }
+    textarea { min-height:120px; resize:vertical; }
 
     .agree {
       display:flex;
@@ -480,12 +599,9 @@
       margin:4px 0 18px;
     }
 
-    .agree input {
-      width:auto;
-      margin-top:6px;
-    }
+    .agree input { width:auto; margin-top:6px; }
 
-    button {
+    button[type="submit"] {
       width:100%;
       padding:15px;
       border:none;
@@ -495,24 +611,6 @@
       font-size:17px;
       font-weight:900;
       cursor:pointer;
-    }
-
-    .seo-text {
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:36px;
-    }
-
-    .seo-text h2,
-    .seo-text h3 {
-      color:var(--main);
-      letter-spacing:-0.6px;
-    }
-
-    .seo-text p {
-      color:var(--muted);
-      margin-bottom:18px;
     }
 
     .faq-grid {
@@ -534,9 +632,46 @@
       margin-bottom:8px;
     }
 
-    .faq p {
-      margin:0;
+    .faq p { margin:0; color:var(--muted); }
+
+    .related-section { background:var(--soft); }
+
+    .related-grid {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .related-card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:30px;
+      box-shadow:0 10px 28px rgba(54,90,76,0.07);
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+
+    .related-card:hover {
+      transform:translateY(-2px);
+      box-shadow:0 14px 32px rgba(54,90,76,0.12);
+    }
+
+    .related-card h3 {
+      margin:0 0 10px;
+      color:var(--main);
+      font-size:22px;
+    }
+
+    .related-card p {
+      margin:0 0 16px;
       color:var(--muted);
+      font-size:15px;
+    }
+
+    .related-card span {
+      color:var(--main);
+      font-weight:900;
+      font-size:15px;
     }
 
     footer {
@@ -559,6 +694,13 @@
       font-size:18px;
     }
 
+    .footer-links a {
+      display:block;
+      margin-bottom:6px;
+      color:var(--main);
+      font-weight:700;
+    }
+
     .floating-call {
       position:fixed;
       right:18px;
@@ -572,129 +714,54 @@
       box-shadow:0 12px 30px rgba(54,90,76,0.28);
     }
 
+    @media (max-width:1024px) {
+      .service-grid { grid-template-columns:repeat(3,1fr); }
+      .testimonial-grid { grid-template-columns:repeat(2,1fr); }
+    }
+
     @media (max-width:900px) {
       .nav-links { display:none; }
-
       .hero { padding:86px 20px 78px; }
-
       .hero h1 { font-size:34px; }
-
       .hero p { font-size:16px; }
-
-      .intro-box,
+      .hero-stats,
       .service-grid,
+      .pricing-box,
+      .factor-grid,
       .steps,
-      .price-grid,
-      .case-grid,
+      .photo-grid,
+      .review-grid,
+      .testimonial-grid,
       .area-grid,
       .contact-box,
-      .faq-grid {
+      .faq-grid,
+      .related-grid {
         grid-template-columns:1fr;
       }
-
       section { padding:62px 20px; }
-
       .title h2 { font-size:28px; }
-
+      .pricing-big { font-size:40px; }
       .floating-call {
         left:18px;
         right:18px;
         text-align:center;
       }
-
-      .price-note { text-align:left; }
     }
-    .case-timeline {
-  display:flex;
-  flex-direction:column;
-  gap:26px;
-}
-
-.case-step {
-  display:grid;
-  grid-template-columns:0.9fr 1.1fr;
-  gap:28px;
-  align-items:center;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:26px;
-  padding:28px;
-  box-shadow:0 10px 28px rgba(54,90,76,0.07);
-}
-
-.case-step.reverse {
-  grid-template-columns:1.1fr 0.9fr;
-}
-
-.case-step.reverse .case-text {
-  order:2;
-}
-
-.case-step.reverse img {
-  order:1;
-}
-
-.case-step img {
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  border-radius:20px;
-  display:block;
-  background:#d8d0c3;
-}
-
-.case-text b {
-  display:inline-block;
-  color:var(--point);
-  font-size:14px;
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.case-text h3 {
-  color:var(--main);
-  font-size:26px;
-  margin:0 0 12px;
-  letter-spacing:-0.8px;
-}
-
-.case-text p {
-  color:var(--muted);
-  margin:0;
-}
-
-@media(max-width:900px) {
-  .case-step,
-  .case-step.reverse {
-    grid-template-columns:1fr;
-  }
-
-  .case-step.reverse .case-text,
-  .case-step.reverse img {
-    order:initial;
-  }
-
-  .case-step img {
-    height:240px;
-  }
-}
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  emailjs.init("JKsVOKPtnWHIr2BCV");
-</script>
 </head>
 
 <body>
 
 <header>
   <div class="nav">
-    <a href="/" class="logo">올바른수거</a>
+    <a href="/" class="logo">올바른 유품정리</a>
 
     <nav class="nav-links">
       <a href="#service">서비스</a>
+      <a href="#pricing">비용안내</a>
       <a href="#process">진행과정</a>
-      <a href="#pricing">가격안내</a>
+      <a href="#case">현장사진</a>
+      <a href="/reviews/">작업후기</a>
       <a href="#area">지역안내</a>
       <a href="#contact">상담접수</a>
     </nav>
@@ -707,43 +774,31 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <div class="badge">서울 · 경기 유품정리 전문</div>
-      <h1>소중한 마지막 정리,<br />올바른 방식으로 도와드립니다.</h1>
+      <div class="badge">서울 · 경기 유품정리 45만원부터</div>
+      <h1>서울·경기 유품정리<br />올바른 유품정리</h1>
       <p>
-        올바른수거는 서울·경기 전 지역에서 유품정리, 고독사청소, 특수청소를 진행합니다.
-        유품 분류부터 공간 정리, 오염 정리, 소독, 폐기물 반출까지 상황에 맞게 차분히 도와드립니다.
+        서울·경기 전 지역 현장의 유품 양과 이동 동선을 확인한 뒤,
+        유품정리·고독사청소·특수청소까지 필요한 범위만 차분하게 안내합니다.
       </p>
 
       <div class="hero-actions">
+        <a href="tel:01043932414" class="btn btn-outline">전화 상담하기</a>
         <a href="#contact" class="btn btn-primary">상담 접수하기</a>
-        <a href="tel:01043932414" class="btn btn-outline">전화 상담 010-4393-2414</a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap intro-box">
-      <div class="intro-main">
-        <h2>유품정리는 단순한 정리가 아닙니다.</h2>
-        <p>
-          남겨진 물건을 확인하고, 보관할 것과 정리할 것을 구분하며,
-          가족분들이 감당하기 어려운 공간을 다시 정돈하는 과정입니다.
-        </p>
-        <p>
-          올바른수거는 과장된 표현보다 정확한 안내와 책임 있는 작업을 우선합니다.
-          현장 상황을 확인한 뒤 필요한 작업만 안내드립니다.
-        </p>
       </div>
 
-      <div class="intro-side">
-        <strong>상담 가능 서비스</strong>
-        <p>유품정리 / 고독사청소 / 특수청소</p>
-
-        <strong>서비스 지역</strong>
-        <p>서울특별시 전 지역 / 경기도 시·군 지역</p>
-
-        <strong>대표 상담</strong>
-        <p>010-4393-2414</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>45만원~</strong>
+          <span>유품정리 기본 비용</span>
+        </div>
+        <div class="hero-stat">
+          <strong>56개 지역</strong>
+          <span>서울 25구 · 경기 31시·군</span>
+        </div>
+        <div class="hero-stat">
+          <strong>유품분류·정리</strong>
+          <span>현장 상황별 맞춤 진행</span>
+        </div>
       </div>
     </div>
   </section>
@@ -751,9 +806,9 @@
   <section id="service">
     <div class="wrap">
       <div class="title">
-        <span>SERVICE</span>
-        <h2>유품정리 · 고독사청소 · 특수청소</h2>
-        <p>현장 상황에 따라 필요한 작업 범위가 달라지기 때문에 상담 후 정확히 안내드립니다.</p>
+        <span>서비스 안내</span>
+        <h2>서울·경기 전 지역 유품정리 주요 업무</h2>
+        <p>작업 범위를 과하게 잡지 않고, 현장에 필요한 유품 분류와 정리부터 반출까지 안내합니다.</p>
       </div>
 
       <div class="service-grid">
@@ -762,68 +817,127 @@
           <h3>유품정리</h3>
           <p>고인의 물품을 확인하고 보관품, 중요 서류, 정리 대상 물품을 구분하여 정돈합니다.</p>
         </div>
-
         <div class="service-card">
           <b>02</b>
           <h3>고독사청소</h3>
           <p>오염 공간 정리, 소독, 냄새 저감, 폐기물 반출까지 현장 상황에 맞춰 진행합니다.</p>
         </div>
-
         <div class="service-card">
           <b>03</b>
           <h3>특수청소</h3>
           <p>일반 청소로 해결하기 어려운 오염, 악취, 장기간 방치된 공간을 정리합니다.</p>
         </div>
+        <div class="service-card">
+          <b>04</b>
+          <h3>유품정리 + 특수청소</h3>
+          <p>유품 분류와 공간 정리 후 필요한 경우 특수청소·소독까지 함께 진행합니다.</p>
+        </div>
+        <div class="service-card">
+          <b>05</b>
+          <h3>폐기물 반출</h3>
+          <p>정리 과정에서 발생하는 생활폐기물과 대형 가구를 분류해 안전하게 반출합니다.</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="pricing-highlight" id="pricing">
+    <div class="wrap">
+      <div class="title">
+        <span>비용 안내</span>
+        <h2>유품정리 비용은 기본 45만원부터입니다</h2>
+      </div>
+
+      <div class="pricing-box">
+        <div>
+          <p class="pricing-big">45만원<span>부터</span></p>
+          <p>정확한 비용은 유품·물품 양, 공간 크기, 층수, 엘리베이터 유무, 특수청소 필요 여부에 따라 달라질 수 있습니다.</p>
+        </div>
+        <ul class="check-list">
+          <li>상담 시 사진을 보내주시면 대략적인 비용 안내가 쉽습니다.</li>
+          <li>유품정리, 고독사청소, 특수청소를 함께 상담할 수 있습니다.</li>
+          <li>반출 동선과 엘리베이터 사용 여부를 먼저 확인합니다.</li>
+          <li>작업 전 비용 기준과 진행 순서를 안내합니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="title">
+        <span>비용 기준</span>
+        <h2>유품정리 비용에 영향을 주는 요소</h2>
+        <p>같은 규모의 공간이라도 현장 조건에 따라 시간과 비용이 달라질 수 있습니다.</p>
+      </div>
+
+      <div class="factor-grid">
+        <div class="factor-card">
+          <b>01</b>
+          <h3>유품·물품의 양</h3>
+          <p>유품과 생활용품, 가구의 양에 따라 작업 시간과 반출 비용이 달라집니다.</p>
+        </div>
+        <div class="factor-card">
+          <b>02</b>
+          <h3>층수와 엘리베이터</h3>
+          <p>고층 건물, 계단 작업, 엘리베이터 사용 제한 여부에 따라 작업 인원이 달라질 수 있습니다.</p>
+        </div>
+        <div class="factor-card">
+          <b>03</b>
+          <h3>특수청소 필요 여부</h3>
+          <p>오염 정리, 소독, 냄새 저감이 필요한 경우 작업 범위와 비용이 달라질 수 있습니다.</p>
+        </div>
+        <div class="factor-card">
+          <b>04</b>
+          <h3>반출 동선과 주차</h3>
+          <p>주차 공간, 엘리베이터 접근, 건물 앞 정차 가능 여부에 따라 작업 시간이 달라질 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="wrap intro-block">
+      <h2>유품정리, 양보다 중요한 것은 유품 분류와 가족의 의사 확인입니다</h2>
+      <p>
+        유품정리는 단순히 물건을 치우는 작업이 아닙니다. 아파트, 빌라, 오피스텔, 단독주택처럼 공간 구조가 다르고,
+        보관해야 할 물품과 정리해야 할 물품을 구분하는 과정이 필요합니다.
+      </p>
+      <p>
+        올바른 유품정리는 유품의 종류와 양, 반출 동선, 특수청소 필요 여부, 가족분의 요청 사항을 함께 확인해
+        현장 상황에 맞는 방법으로 진행합니다. 특히 고독사청소와 특수청소가 필요한 현장은 상담 단계에서
+        사진과 주소를 함께 확인하는 것이 좋습니다.
+      </p>
     </div>
   </section>
 
   <section class="process" id="process">
     <div class="wrap">
       <div class="title">
-        <span>PROCESS</span>
-        <h2>진행 과정</h2>
-        <p>처음 상담부터 마무리 확인까지 단계별로 안내드립니다.</p>
+        <span>진행 과정</span>
+        <h2>상담부터 정리까지 간단하게 진행합니다</h2>
       </div>
 
       <div class="steps">
-        <div class="step"><b>STEP 01</b><strong>상담 접수</strong><p>지역과 현장 상황을 확인합니다.</p></div>
-        <div class="step"><b>STEP 02</b><strong>현장 확인</strong><p>물품 양과 작업 범위를 파악합니다.</p></div>
-        <div class="step"><b>STEP 03</b><strong>유품 분류</strong><p>보관품과 정리품을 구분합니다.</p></div>
-        <div class="step"><b>STEP 04</b><strong>정리 작업</strong><p>공간별 정리와 반출을 진행합니다.</p></div>
-        <div class="step"><b>STEP 05</b><strong>청소·소독</strong><p>필요 시 특수청소를 함께 진행합니다.</p></div>
-        <div class="step"><b>STEP 06</b><strong>마무리 확인</strong><p>작업 완료 후 현장을 확인합니다.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pricing" id="pricing">
-    <div class="wrap">
-      <div class="title">
-        <span>PRICING</span>
-        <h2>가격 가이드</h2>
-        <p>아래 금액은 기본 시작 가격이며, 현장 환경과 작업 범위에 따라 달라질 수 있습니다.</p>
-      </div>
-
-      <div class="price-note">* 부가세 별도 · 폐기물 운반비 포함</div>
-
-      <div class="price-grid">
-        <div class="price-card">
-          <strong>유품정리</strong>
-          <div class="price">45만원 <span>부터~</span></div>
-          <p>고인의 유품을 정중하게 분류하고 정리합니다.</p>
+        <div class="step">
+          <b>01</b>
+          <strong>상담 접수</strong>
+          <p>주소, 유품·물품 종류, 대략적인 양을 확인합니다.</p>
         </div>
-
-        <div class="price-card">
-          <strong>고독사 특수청소</strong>
-          <div class="price">80만원 <span>부터~</span></div>
-          <p>오염 정리, 소독, 냄새 저감 작업까지 진행합니다.</p>
+        <div class="step">
+          <b>02</b>
+          <strong>현장 확인</strong>
+          <p>반출 동선, 층수, 엘리베이터 여부를 확인합니다.</p>
         </div>
-
-        <div class="price-card">
-          <strong>특수청소</strong>
-          <div class="price">상담 후 <span>안내</span></div>
-          <p>현장 오염도와 작업 범위에 따라 비용이 달라집니다.</p>
+        <div class="step">
+          <b>03</b>
+          <strong>유품 분류·정리</strong>
+          <p>보관품과 정리품을 구분하고 공간별로 정리합니다.</p>
+        </div>
+        <div class="step">
+          <b>04</b>
+          <strong>청소·마무리</strong>
+          <p>필요 시 특수청소·소독 후 현장을 깔끔하게 정돈합니다.</p>
         </div>
       </div>
     </div>
@@ -832,213 +946,259 @@
   <section id="case">
     <div class="wrap">
       <div class="title">
-        <span>CASE</span>
-        <h2>유품정리 작업 사례</h2>
-        <p>작업 전 현장 확인부터 소독·연무 과정, 작업 후 정리 완료까지 단계별로 진행합니다.</p>
+        <span>현장사진</span>
+        <h2>유품정리 전·중·후 현장 이미지</h2>
+        <p>작업 전 상태, 정리 과정, 마무리 후 공간을 단계별로 확인할 수 있습니다.</p>
       </div>
 
-      <div class="case-timeline">
-        <div class="case-step">
-          <div class="case-text">
-            <b>STEP 01</b>
-            <h3>작업 전 현장 확인</h3>
-            <p>유품의 양, 보관 물품, 폐기물 반출 범위와 이동 동선을 확인합니다.</p>
-          </div>
-          <img src="/image/cases/before-01.jpg" alt="서울 경기 유품정리 작업 전 현장">
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="image/main/before-01.jpg" alt="서울 경기 유품정리 작업 전 현장">
+          <div><h3>작업 전</h3></div>
         </div>
+        <div class="photo-card">
+          <img src="image/main/process-01.jpg" alt="서울 경기 유품정리 작업 중">
+          <div><h3>작업 중</h3></div>
+        </div>
+        <div class="photo-card">
+          <img src="image/main/after-01.jpg" alt="서울 경기 유품정리 작업 후">
+          <div><h3>작업 후</h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="case-step reverse">
-          <div class="case-text">
-            <b>STEP 02</b>
-            <h3>소독·연무 작업 과정</h3>
-            <p>필요한 경우 오염 정리 후 소독과 냄새 저감 작업을 함께 진행합니다.</p>
-          </div>
-          <img src="/image/cases/process-01.jpg" alt="서울 경기 유품정리 소독 연무 작업 과정">
-        </div>
+  <section id="reviews">
+    <div class="wrap">
+      <div class="title">
+        <span>작업후기</span>
+        <h2>서울·경기 유품정리 실제 작업후기</h2>
+        <p>지역별 현장에서 진행한 유품정리, 고독사청소, 특수청소 작업후기입니다.</p>
+      </div>
 
-        <div class="case-step">
-          <div class="case-text">
-            <b>STEP 03</b>
-            <h3>작업 후 정리 완료</h3>
-            <p>유품 분류와 폐기물 반출 후 공간을 정돈하고 마무리 확인을 진행합니다.</p>
-          </div>
-          <img src="/image/cases/after-01.jpg" alt="서울 경기 유품정리 작업 후 정리 완료">
-        </div>
+      <div class="review-grid">
+        <article class="review-card">
+          <span class="review-tag">유품정리</span>
+          <h3>수원시 아파트 유품정리 작업후기</h3>
+          <p>고인의 유품을 분류하고 보관품과 정리품을 구분해 정돈한 현장입니다.</p>
+          <a href="/reviews/suwon/" class="review-link">작업후기 보기 →</a>
+        </article>
+        <article class="review-card">
+          <span class="review-tag">고독사청소</span>
+          <h3>성남시 빌라 고독사청소 작업후기</h3>
+          <p>오염 정리, 소독, 폐기물 반출까지 단계적으로 진행한 작업후기입니다.</p>
+          <a href="/reviews/seongnam/" class="review-link">작업후기 보기 →</a>
+        </article>
+        <article class="review-card">
+          <span class="review-tag">특수청소</span>
+          <h3>고양시 특수청소 작업후기</h3>
+          <p>장기간 방치된 공간의 오염 정리와 소독을 함께 진행한 현장입니다.</p>
+          <a href="/reviews/goyang/" class="review-link">작업후기 보기 →</a>
+        </article>
+      </div>
+
+      <div class="review-more">
+        <a href="/reviews/">지역별 작업후기 전체보기</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="wrap">
+      <div class="title">
+        <span>고객후기</span>
+        <h2>서울·경기 유품정리 고객후기</h2>
+      </div>
+
+      <div class="testimonial-grid">
+        <blockquote class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>유품정리가 처음이라 막막했는데, 어떤 물품을 보관할지부터 차분히 안내해 주셔서 마음이 놓였습니다.</p>
+          <cite>강남구 의뢰인</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>고독사청소가 필요한 상황이었는데, 오염 정리와 소독 과정을 미리 설명해 주셔서 신뢰가 갔습니다.</p>
+          <cite>수원시 의뢰인</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>비용 기준을 먼저 안내받고 진행해서 부담 없이 작업을 맡길 수 있었습니다.</p>
+          <cite>성남시 의뢰인</cite>
+        </blockquote>
+        <blockquote class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>엘리베이터 사용이 어려운 현장이었는데 반출 순서를 잘 조율해 주셔서 작업이 수월했습니다.</p>
+          <cite>고양시 의뢰인</cite>
+        </blockquote>
       </div>
     </div>
   </section>
 
   <section class="area" id="area">
-  <div class="wrap">
-    <div class="title">
-      <span>AREA</span>
-      <h2>서울·경기 전 지역 상담 가능</h2>
-      <p>서울은 구 단위, 경기도는 시·군 단위 지역 페이지로 연결됩니다.</p>
-    </div>
-
-    <div class="area-grid">
-      <div class="area-card">
-        <h3>서울특별시 25개 구</h3>
-        <div class="chips">
-          <a href="/regions/gangnam/">강남구</a>
-          <a href="/regions/gangdong/">강동구</a>
-          <a href="/regions/gangbuk/">강북구</a>
-          <a href="/regions/gangseo/">강서구</a>
-          <a href="/regions/gwanak/">관악구</a>
-          <a href="/regions/gwangjin/">광진구</a>
-          <a href="/regions/guro/">구로구</a>
-          <a href="/regions/geumcheon/">금천구</a>
-          <a href="/regions/nowon/">노원구</a>
-          <a href="/regions/dobong/">도봉구</a>
-          <a href="/regions/dongdaemun/">동대문구</a>
-          <a href="/regions/dongjak/">동작구</a>
-          <a href="/regions/mapo/">마포구</a>
-          <a href="/regions/seodaemun/">서대문구</a>
-          <a href="/regions/seocho/">서초구</a>
-          <a href="/regions/seongdong/">성동구</a>
-          <a href="/regions/seongbuk/">성북구</a>
-          <a href="/regions/songpa/">송파구</a>
-          <a href="/regions/yangcheon/">양천구</a>
-          <a href="/regions/yeongdeungpo/">영등포구</a>
-          <a href="/regions/yongsan/">용산구</a>
-          <a href="/regions/eunpyeong/">은평구</a>
-          <a href="/regions/jongno/">종로구</a>
-          <a href="/regions/jung/">중구</a>
-          <a href="/regions/jungnang/">중랑구</a>
-        </div>
+    <div class="wrap">
+      <div class="title">
+        <span>서울·경기 전지역</span>
+        <h2>서울 25개 구 · 경기 31개 시·군 유품정리 가능 지역</h2>
+        <p>각 지역 페이지에서 지역 상황에 맞는 안내와 작업후기를 확인할 수 있습니다.</p>
       </div>
 
-      <div class="area-card">
-        <h3>경기도 31개 시·군</h3>
-        <div class="chips">
-          <a href="/regions/suwon/">수원시</a>
-          <a href="/regions/seongnam/">성남시</a>
-          <a href="/regions/goyang/">고양시</a>
-          <a href="/regions/yongin/">용인시</a>
-          <a href="/regions/bucheon/">부천시</a>
-          <a href="/regions/ansan/">안산시</a>
-          <a href="/regions/anyang/">안양시</a>
-          <a href="/regions/namyangju/">남양주시</a>
-          <a href="/regions/hwaseong/">화성시</a>
-          <a href="/regions/pyeongtaek/">평택시</a>
-          <a href="/regions/uijeongbu/">의정부시</a>
-          <a href="/regions/siheung/">시흥시</a>
-          <a href="/regions/paju/">파주시</a>
-          <a href="/regions/gimpo/">김포시</a>
-          <a href="/regions/gwangmyeong/">광명시</a>
-          <a href="/regions/gwangju/">광주시</a>
-          <a href="/regions/gunpo/">군포시</a>
-          <a href="/regions/osan/">오산시</a>
-          <a href="/regions/icheon/">이천시</a>
-          <a href="/regions/yangju/">양주시</a>
-          <a href="/regions/guri/">구리시</a>
-          <a href="/regions/anseong/">안성시</a>
-          <a href="/regions/pocheon/">포천시</a>
-          <a href="/regions/uiwang/">의왕시</a>
-          <a href="/regions/hanam/">하남시</a>
-          <a href="/regions/yeoju/">여주시</a>
-          <a href="/regions/dongducheon/">동두천시</a>
-          <a href="/regions/gwacheon/">과천시</a>
-          <a href="/regions/gapyeong/">가평군</a>
-          <a href="/regions/yangpyeong/">양평군</a>
-          <a href="/regions/yeoncheon/">연천군</a>
+      <div class="area-grid">
+        <div class="area-card">
+          <h3>서울특별시 25개 구</h3>
+          <div class="chips">
+            <a href="/regions/gangnam/">강남구</a>
+            <a href="/regions/gangdong/">강동구</a>
+            <a href="/regions/gangbuk/">강북구</a>
+            <a href="/regions/gangseo/">강서구</a>
+            <a href="/regions/gwanak/">관악구</a>
+            <a href="/regions/gwangjin/">광진구</a>
+            <a href="/regions/guro/">구로구</a>
+            <a href="/regions/geumcheon/">금천구</a>
+            <a href="/regions/nowon/">노원구</a>
+            <a href="/regions/dobong/">도봉구</a>
+            <a href="/regions/dongdaemun/">동대문구</a>
+            <a href="/regions/dongjak/">동작구</a>
+            <a href="/regions/mapo/">마포구</a>
+            <a href="/regions/seodaemun/">서대문구</a>
+            <a href="/regions/seocho/">서초구</a>
+            <a href="/regions/seongdong/">성동구</a>
+            <a href="/regions/seongbuk/">성북구</a>
+            <a href="/regions/songpa/">송파구</a>
+            <a href="/regions/yangcheon/">양천구</a>
+            <a href="/regions/yeongdeungpo/">영등포구</a>
+            <a href="/regions/yongsan/">용산구</a>
+            <a href="/regions/eunpyeong/">은평구</a>
+            <a href="/regions/jongno/">종로구</a>
+            <a href="/regions/jung/">중구</a>
+            <a href="/regions/jungnang/">중랑구</a>
+          </div>
+        </div>
+
+        <div class="area-card">
+          <h3>경기도 31개 시·군</h3>
+          <div class="chips">
+            <a href="/regions/suwon/">수원시</a>
+            <a href="/regions/seongnam/">성남시</a>
+            <a href="/regions/goyang/">고양시</a>
+            <a href="/regions/yongin/">용인시</a>
+            <a href="/regions/bucheon/">부천시</a>
+            <a href="/regions/ansan/">안산시</a>
+            <a href="/regions/anyang/">안양시</a>
+            <a href="/regions/namyangju/">남양주시</a>
+            <a href="/regions/hwaseong/">화성시</a>
+            <a href="/regions/pyeongtaek/">평택시</a>
+            <a href="/regions/uijeongbu/">의정부시</a>
+            <a href="/regions/siheung/">시흥시</a>
+            <a href="/regions/paju/">파주시</a>
+            <a href="/regions/gimpo/">김포시</a>
+            <a href="/regions/gwangmyeong/">광명시</a>
+            <a href="/regions/gwangju/">광주시</a>
+            <a href="/regions/gunpo/">군포시</a>
+            <a href="/regions/osan/">오산시</a>
+            <a href="/regions/icheon/">이천시</a>
+            <a href="/regions/yangju/">양주시</a>
+            <a href="/regions/guri/">구리시</a>
+            <a href="/regions/anseong/">안성시</a>
+            <a href="/regions/pocheon/">포천시</a>
+            <a href="/regions/uiwang/">의왕시</a>
+            <a href="/regions/hanam/">하남시</a>
+            <a href="/regions/yeoju/">여주시</a>
+            <a href="/regions/dongducheon/">동두천시</a>
+            <a href="/regions/gwacheon/">과천시</a>
+            <a href="/regions/gapyeong/">가평군</a>
+            <a href="/regions/yangpyeong/">양평군</a>
+            <a href="/regions/yeoncheon/">연천군</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section class="contact-section" id="contact">
     <div class="wrap contact-box">
       <div class="contact-info">
-        <h2>서울·경기 유품정리 상담</h2>
-        <p>성함, 연락처, 지역, 필요한 서비스를 남겨주시면 확인 후 연락드립니다.</p>
+        <h2>서울·경기 전지역 유품정리 상담 접수</h2>
+        <p>사진, 주소, 유품·물품 양을 남겨주시면 확인 후 연락드립니다.</p>
         <a href="tel:01043932414" class="phone-large">010-4393-2414</a>
+        <ul class="contact-bullets">
+          <li>✓ 유품정리 · 고독사청소</li>
+          <li>✓ 특수청소 · 유품정리 + 특수청소</li>
+          <li>✓ 폐기물 반출 · 공간 정돈</li>
+        </ul>
       </div>
 
       <form id="contactForm">
+        <input type="text" placeholder="성함" required />
+        <input type="tel" placeholder="연락처" required />
+        <input type="text" placeholder="현장 주소" required />
         <select required>
-          <option value="">필요한 서비스를 선택하세요</option>
+          <option value="">필요 서비스</option>
           <option>유품정리</option>
           <option>고독사청소</option>
           <option>특수청소</option>
           <option>유품정리 + 특수청소</option>
+          <option>폐기물 반출</option>
         </select>
-
-        <input type="text" placeholder="성함" required />
-        <input type="tel" placeholder="연락처" required />
-        <input type="text" placeholder="지역 예: 서울 강남구 / 경기 수원시" required />
-        <textarea placeholder="상담 내용을 간단히 적어주세요"></textarea>
+        <textarea placeholder="문의 내용"></textarea>
 
         <label class="agree">
           <input type="checkbox" id="privacyCheck" />
-          <span>
-            개인정보 수집 및 이용에 동의합니다.
-            수집항목은 성함, 연락처, 지역, 상담내용이며 상담 및 견적 안내 목적으로만 사용됩니다.
-          </span>
+          <span>상담 접수를 위한 개인정보 수집 및 이용에 동의합니다.</span>
         </label>
 
-        <button type="submit">상담 신청하기</button>
+        <button type="submit">상담 접수하기</button>
       </form>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="seo-text">
-        <h2>서울·경기 유품정리, 올바른수거가 차분하게 도와드립니다</h2>
-        <p>
-          서울과 경기도 지역에서 유품정리, 고독사청소, 특수청소가 필요한 경우 가장 중요한 것은
-          현장 상황을 정확히 확인하고 가족분들이 원하는 방향에 맞춰 정리하는 것입니다.
-          유품정리는 단순한 폐기나 청소가 아니라 고인의 물품을 확인하고, 남겨야 할 물건과 정리해야 할 물건을 구분하는 과정입니다.
-        </p>
-        <p>
-          올바른수거는 서울특별시 25개 구와 경기도 주요 시·군 지역을 중심으로 상담을 진행합니다.
-          아파트, 빌라, 단독주택, 오피스텔, 원룸 등 공간 형태에 따라 작업 범위가 달라질 수 있으며,
-          물품의 양, 반출 환경, 오염 정도, 특수청소 필요 여부에 따라 비용과 일정도 달라집니다.
-        </p>
-        <p>
-          고독사청소나 특수청소가 필요한 현장은 일반적인 정리와는 다른 접근이 필요합니다.
-          오염 정리, 소독, 냄새 저감, 폐기물 반출 등 현장 상황에 따라 필요한 작업을 단계적으로 진행해야 하며,
-          무리한 작업보다 안전하고 신중한 절차가 우선되어야 합니다.
-        </p>
-        <h3>서울·경기 지역별 유품정리 상담</h3>
-        <p>
-          강남구, 송파구, 마포구, 영등포구 등 서울 지역은 물론 수원시, 성남시, 용인시, 고양시, 화성시,
-          부천시, 안산시 등 경기도 지역에서도 상담이 가능합니다. 지역별 상세 페이지는 추후 별도로 구성하여
-          각 지역에서 필요한 유품정리와 특수청소 정보를 더 자세히 안내할 예정입니다.
-        </p>
-      </div>
     </div>
   </section>
 
   <section id="faq">
     <div class="wrap">
       <div class="title">
-        <span>FAQ</span>
-        <h2>자주 묻는 질문</h2>
+        <span>자주 묻는 질문</span>
+        <h2>서울·경기 전지역 유품정리 FAQ</h2>
       </div>
 
       <div class="faq-grid">
         <div class="faq">
-          <strong>Q. 서울과 경기 전 지역 작업이 가능한가요?</strong>
-          <p>서울 전 지역과 경기도 주요 시·군 지역 상담이 가능합니다. 현장 위치와 일정에 따라 안내드립니다.</p>
+          <strong>서울·경기 전 지역 유품정리 비용은 얼마부터인가요?</strong>
+          <p>기본 비용은 45만원부터이며, 유품·물품 양, 공간 크기, 특수청소 필요 여부, 층수와 엘리베이터 여부에 따라 달라질 수 있습니다.</p>
         </div>
-
         <div class="faq">
-          <strong>Q. 유품정리 비용은 어떻게 정해지나요?</strong>
-          <p>물품의 양, 공간 크기, 반출 환경, 특수청소 필요 여부에 따라 달라집니다.</p>
+          <strong>사진만 보내도 상담이 가능한가요?</strong>
+          <p>가능합니다. 현장 사진과 주소, 엘리베이터 여부를 알려주시면 대략적인 범위와 비용 안내가 더 정확해집니다.</p>
         </div>
-
         <div class="faq">
-          <strong>Q. 고독사청소와 특수청소도 함께 가능한가요?</strong>
-          <p>가능합니다. 오염 정리, 소독, 냄새 저감, 폐기물 반출까지 현장 상황에 맞게 진행합니다.</p>
+          <strong>유품정리와 특수청소를 함께 진행할 수 있나요?</strong>
+          <p>가능합니다. 유품 분류, 공간 정리, 오염 정리, 소독, 폐기물 반출까지 현장 상황에 맞춰 상담할 수 있습니다.</p>
         </div>
-
         <div class="faq">
-          <strong>Q. 가족이 현장에 꼭 있어야 하나요?</strong>
+          <strong>가족이 현장에 꼭 있어야 하나요?</strong>
           <p>상황에 따라 비대면 상담도 가능하지만, 보관할 물품과 중요한 물품은 사전 확인을 권장합니다.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section" id="related">
+    <div class="wrap">
+      <div class="title">
+        <span>올바른 관련 서비스</span>
+        <h2>서울·경기 올바른 서비스 바로가기</h2>
+        <p>유품정리와 함께 이용하실 수 있는 올바른 관련 서비스입니다.</p>
+      </div>
+
+      <div class="related-grid">
+        <a href="https://www.allbarunclean.com/" class="related-card" target="_blank" rel="noopener">
+          <h3>올바른수거</h3>
+          <p>서울·경기 전 지역 쓰레기집청소, 빈집정리, 유품·고독사·특수청소 등 종합 정리 서비스를 안내합니다.</p>
+          <span>www.allbarunclean.com →</span>
+        </a>
+        <a href="https://www.waste.allbarunclean.com/" class="related-card" target="_blank" rel="noopener">
+          <h3>올바른폐기물처리</h3>
+          <p>서울·경기 전 지역 가정폐기물, 이사폐기물, 빈집정리, 폐업폐기물 등 폐기물 처리 서비스를 안내합니다.</p>
+          <span>www.waste.allbarunclean.com →</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1048,13 +1208,15 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <strong>올바른수거</strong><br />
+      <strong>올바른 유품정리</strong><br />
       서울·경기 유품정리 · 고독사청소 · 특수청소
     </div>
 
-    <div>
+    <div class="footer-links">
       대표 상담 : <a href="tel:01043932414">010-4393-2414</a><br />
-      메인 : allbarunclean.com<br />
+      <a href="https://www.allbarunclean.com/" target="_blank" rel="noopener">올바른수거 · allbarunclean.com</a>
+      <a href="https://www.waste.allbarunclean.com/" target="_blank" rel="noopener">올바른폐기물처리 · waste.allbarunclean.com</a><br />
+      <a href="/reviews/">작업후기 모음</a><br />
       유품정리 : yupum.allbarunclean.com
     </div>
   </div>

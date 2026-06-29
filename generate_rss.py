@@ -2,7 +2,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 BASE_URL = "https://yupum.allbarunclean.com"
-SITE_TITLE = "올바른수거 유품정리"
+SITE_TITLE = "올바른 유품정리"
 SITE_DESC = "서울·경기 유품정리, 고독사청소, 특수청소 전문 사이트"
 
 def get_title(html, fallback):
@@ -20,6 +20,19 @@ def generate():
 
     index_html = (root / "index.html").read_text(encoding="utf-8")
     items.append((SITE_TITLE, BASE_URL + "/", SITE_DESC))
+
+    items.append(("서울·경기 유품정리 작업후기 | 올바른 유품정리", BASE_URL + "/reviews/", "지역별 유품정리 작업후기 모음"))
+
+    reviews_dir = root / "reviews"
+    if reviews_dir.exists():
+        for folder in sorted(reviews_dir.iterdir()):
+            index_file = folder / "index.html"
+            if folder.is_dir() and index_file.exists():
+                html = index_file.read_text(encoding="utf-8")
+                title = get_title(html, f"{folder.name} 작업후기 | 올바른 유품정리")
+                link = f"{BASE_URL}/reviews/{folder.name}/"
+                desc = title.replace(f"| {SITE_TITLE}", "").replace("| 올바른 유품정리", "").strip()
+                items.append((title, link, desc))
 
     for folder in sorted(regions_dir.iterdir()):
         index_file = folder / "index.html"

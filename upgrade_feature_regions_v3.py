@@ -29,19 +29,19 @@ def image_case_section(region_name, num):
 
       <div class="case-box">
         <div class="card">
-          <img class="case-photo" src="/image/cases/before-{n}.jpg" alt="{region_name} 유품정리 작업 전 현장">
+          <img class="case-photo" src="/image/main/before-{n}.jpg" alt="{region_name} 유품정리 작업 전 현장">
           <strong>작업 전 현장</strong>
           <p>정리가 필요한 공간의 물품 상태와 반출 범위를 확인합니다.</p>
         </div>
 
         <div class="card">
-          <img class="case-photo" src="/image/cases/process-{n}.jpg" alt="{region_name} 유품정리 소독 연무 작업 과정">
+          <img class="case-photo" src="/image/main/process-{n}.jpg" alt="{region_name} 유품정리 소독 연무 작업 과정">
           <strong>소독·연무 작업 과정</strong>
           <p>필요한 경우 오염 정리 후 소독과 냄새 저감 작업을 함께 진행합니다.</p>
         </div>
 
         <div class="card">
-          <img class="case-photo" src="/image/cases/after-{n}.jpg" alt="{region_name} 유품정리 작업 후 정리 완료">
+          <img class="case-photo" src="/image/main/after-{n}.jpg" alt="{region_name} 유품정리 작업 후 정리 완료">
           <strong>작업 후 정리 완료</strong>
           <p>유품 분류와 폐기물 반출 후 공간을 정돈하고 마무리 확인을 진행합니다.</p>
         </div>

@@ -7,12 +7,18 @@ def generate():
     root = Path(__file__).resolve().parent
     regions_dir = root / "regions"
 
-    urls = [BASE_URL + "/"]
+    urls = [BASE_URL + "/", BASE_URL + "/reviews/"]
 
     if regions_dir.exists():
         for folder in sorted(regions_dir.iterdir()):
             if folder.is_dir() and (folder / "index.html").exists():
                 urls.append(f"{BASE_URL}/regions/{folder.name}/")
+
+    reviews_dir = root / "reviews"
+    if reviews_dir.exists():
+        for folder in sorted(reviews_dir.iterdir()):
+            if folder.is_dir() and (folder / "index.html").exists():
+                urls.append(f"{BASE_URL}/reviews/{folder.name}/")
 
     today = date.today().isoformat()
 

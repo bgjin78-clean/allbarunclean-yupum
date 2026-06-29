@@ -37,7 +37,7 @@ def case_section(region_name, num):
               현장 상황을 확인한 뒤 필요한 작업 인원과 절차를 안내합니다.
             </p>
           </div>
-          <img src="/image/cases/before-{n}.jpg" alt="{region_name} 유품정리 작업 전 현장">
+          <img src="/image/main/before-{n}.jpg" alt="{region_name} 유품정리 작업 전 현장">
         </div>
 
         <div class="case-step reverse">
@@ -49,7 +49,7 @@ def case_section(region_name, num):
               공간 상태에 따라 연무 작업과 마무리 소독을 단계적으로 진행합니다.
             </p>
           </div>
-          <img src="/image/cases/process-{n}.jpg" alt="{region_name} 유품정리 소독 연무 작업 과정">
+          <img src="/image/main/process-{n}.jpg" alt="{region_name} 유품정리 소독 연무 작업 과정">
         </div>
 
         <div class="case-step">
@@ -61,7 +61,7 @@ def case_section(region_name, num):
               가족분들이 확인해야 할 물품은 별도로 구분하여 안내드립니다.
             </p>
           </div>
-          <img src="/image/cases/after-{n}.jpg" alt="{region_name} 유품정리 작업 후 정리 완료">
+          <img src="/image/main/after-{n}.jpg" alt="{region_name} 유품정리 작업 후 정리 완료">
         </div>
       </div>
     </div>
