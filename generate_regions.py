@@ -33,7 +33,7 @@ REGIONS = [
 
 SEO_INTROS = [
     "유품정리는 단순히 물건을 치우는 일이 아니라 남겨진 물품을 확인하고 가족분들이 필요한 물건을 구분하는 과정입니다.",
-    "갑작스럽게 정리가 필요한 상황에서는 어디서부터 시작해야 할지 막막할 수 있습니다. 올바른수거는 현장 상황을 먼저 확인하고 필요한 작업만 안내합니다.",
+    "갑작스럽게 정리가 필요한 상황에서는 어디서부터 시작해야 할지 막막할 수 있습니다. 올바른 유품정리는 현장 상황을 먼저 확인하고 필요한 작업만 안내합니다.",
     "공간의 크기, 물품의 양, 반출 환경, 특수청소 필요 여부에 따라 작업 범위와 비용은 달라질 수 있습니다.",
     "고독사청소나 특수청소가 함께 필요한 경우 일반 정리와는 다른 절차가 필요합니다. 오염 정리, 소독, 냄새 저감까지 현장에 맞춰 진행합니다.",
 ]
@@ -91,11 +91,11 @@ def schema_json(region_type, name, slug, title, desc):
         "description": desc,
         "author": {
             "@type": "Organization",
-            "name": "올바른수거"
+            "name": "올바른 유품정리"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "올바른수거"
+            "name": "올바른 유품정리"
         },
         "mainEntityOfPage": url,
         "dateModified": date.today().isoformat()
@@ -104,7 +104,7 @@ def schema_json(region_type, name, slug, title, desc):
     business_schema = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "올바른수거",
+        "name": "올바른 유품정리",
         "url": BASE_URL,
         "telephone": PHONE,
         "areaServed": f"{region_type} {name}",
@@ -130,8 +130,8 @@ def html_template(region_type, name, slug):
     intro = random.choice(SEO_INTROS)
     related_links = get_related_links(slug, region_type)
 
-    title = f"{name} 유품정리 · 고독사청소 · 특수청소 | 올바른수거"
-    desc = f"올바른수거는 {name} 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다."
+    title = f"{name} 유품정리 · 고독사청소 · 특수청소 | 올바른 유품정리"
+    desc = f"올바른 유품정리는 {name} 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다."
     schemas = schema_json(region_type, name, slug, title, desc)
 
     return f"""<!DOCTYPE html>
@@ -142,7 +142,7 @@ def html_template(region_type, name, slug):
 
   <title>{title}</title>
   <meta name="description" content="{desc}" />
-  <meta name="keywords" content="{name} 유품정리, {name} 고독사청소, {name} 특수청소, {region_type} 유품정리, 올바른수거" />
+  <meta name="keywords" content="{name} 유품정리, {name} 고독사청소, {name} 특수청소, {region_type} 유품정리, 올바른 유품정리" />
 
   <meta property="og:title" content="{title}" />
   <meta property="og:description" content="{desc}" />
@@ -478,7 +478,7 @@ def html_template(region_type, name, slug):
 
 <header>
   <div class="nav">
-    <a href="/" class="logo">올바른수거</a>
+    <a href="/" class="logo">올바른 유품정리</a>
     <a href="tel:{PHONE_LINK}" class="call">{PHONE}</a>
   </div>
 </header>
@@ -489,7 +489,7 @@ def html_template(region_type, name, slug):
       <div class="badge">{region_type} {name} 유품정리 전문</div>
       <h1>{name} 유품정리,<br />고독사청소와 특수청소까지</h1>
       <p>
-        올바른수거는 {name} 지역에서 유품정리, 고독사청소, 특수청소를 진행합니다.
+        올바른 유품정리는 {name} 지역에서 유품정리, 고독사청소, 특수청소를 진행합니다.
         유품 분류부터 공간 정리, 오염 정리, 소독, 폐기물 반출까지 현장 상황에 맞춰 차분히 도와드립니다.
       </p>
       <div class="btns">
@@ -555,7 +555,7 @@ def html_template(region_type, name, slug):
   <section>
     <div class="wrap">
       <div class="content">
-        <h2>{name} 유품정리, 올바른수거가 신중하게 도와드립니다</h2>
+        <h2>{name} 유품정리, 올바른 유품정리가 신중하게 도와드립니다</h2>
         <p>{intro}</p>
         <p>
           {name} 유품정리는 공간의 크기, 물품의 양, 엘리베이터 유무, 주차 가능 여부,
@@ -567,7 +567,7 @@ def html_template(region_type, name, slug):
         </p>
         <h3>{name} 지역 상담 안내</h3>
         <p>
-          올바른수거는 {name} 지역의 아파트, 빌라, 단독주택, 오피스텔, 원룸 등 다양한 주거 공간의
+          올바른 유품정리는 {name} 지역의 아파트, 빌라, 단독주택, 오피스텔, 원룸 등 다양한 주거 공간의
           유품정리 상담을 진행합니다.
         </p>
       </div>
@@ -623,7 +623,7 @@ def html_template(region_type, name, slug):
 <footer>
   <div class="footer-inner">
     <div>
-      <strong>올바른수거</strong><br />
+      <strong>올바른 유품정리</strong><br />
       {name} 유품정리 · 고독사청소 · 특수청소
     </div>
     <div>
