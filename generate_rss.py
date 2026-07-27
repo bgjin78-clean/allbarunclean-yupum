@@ -1,7 +1,7 @@
 from pathlib import Path
 from datetime import datetime, timezone
 
-BASE_URL = "https://yupum.allbarunclean.com"
+BASE_URL = "https://www.yupum.allbarunclean.com"
 SITE_TITLE = "올바른 유품정리"
 SITE_DESC = "서울·경기 유품정리, 고독사청소, 특수청소 전문 사이트"
 

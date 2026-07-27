@@ -2,7 +2,7 @@ from pathlib import Path
 import random
 from datetime import date
 
-BASE_URL = "https://yupum.allbarunclean.com"
+BASE_URL = "https://www.yupum.allbarunclean.com"
 PHONE = "010-4393-2414"
 PHONE_LINK = "01043932414"
 BRAND = "올바른 유품정리"
@@ -335,6 +335,7 @@ def detail_page_html(content):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="{page_url}" />
   <title>{title}</title>
   <meta name="description" content="{desc}" />
   <meta property="og:title" content="{title}" />
@@ -414,6 +415,7 @@ def list_page_html(seoul_cards, gyeonggi_cards):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="{BASE_URL}/reviews/" />
   <title>서울·경기 유품정리 작업후기 | {BRAND}</title>
   <meta name="description" content="서울·경기 현장에서 진행한 유품정리, 고독사청소, 특수청소 작업후기를 지역별로 정리했습니다." />
   <meta property="og:title" content="서울·경기 유품정리 작업후기 | {BRAND}" />

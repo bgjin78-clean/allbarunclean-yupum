@@ -1,7 +1,7 @@
 from pathlib import Path
 from datetime import date
 
-BASE_URL = "https://yupum.allbarunclean.com"
+BASE_URL = "https://www.yupum.allbarunclean.com"
 
 def generate():
     root = Path(__file__).resolve().parent

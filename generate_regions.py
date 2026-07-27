@@ -3,7 +3,7 @@ from datetime import date
 import random
 import json
 
-BASE_URL = "https://yupum.allbarunclean.com"
+BASE_URL = "https://www.yupum.allbarunclean.com"
 PHONE = "010-4393-2414"
 PHONE_LINK = "01043932414"
 
@@ -139,8 +139,7 @@ def html_template(region_type, name, slug):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>{title}</title>
+  <link rel="canonical" href="{BASE_URL}/regions/{slug}/" />
   <meta name="description" content="{desc}" />
   <meta name="keywords" content="{name} 유품정리, {name} 고독사청소, {name} 특수청소, {region_type} 유품정리, 올바른 유품정리" />
 
