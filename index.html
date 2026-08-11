@@ -821,12 +821,12 @@
       padding: 24px;
     }
     .box-visual {
-      width: 120px;
-      height: 90px;
+      display: block;
+      width: 200px;
+      max-width: 100%;
+      height: auto;
       margin: 0 auto 16px;
-      background: linear-gradient(145deg, #c4a574, #a8844f);
-      border-radius: 4px;
-      box-shadow: 4px 6px 0 rgba(0,0,0,0.12);
+      object-fit: contain;
     }
     .box-spec dl { margin: 0; display: grid; gap: 8px; }
     .box-spec dt { color: var(--main); font-weight: 800; font-size: 14px; }
@@ -1106,7 +1106,7 @@
             </p>
           </div>
           <div class="box-spec">
-            <div class="box-visual" aria-hidden="true"></div>
+            <img class="box-visual" src="/image/main/incineration-box.png" alt="우체국 5호 택배상자 (유품소각 기준 박스)" />
             <strong style="color:var(--main);display:block;margin-bottom:12px;text-align:center;">우체국 5호 상자 기준</strong>
             <dl>
               <dt>크기</dt>
