@@ -75,6 +75,14 @@ def schema_json(region_type, name, slug, title, desc):
             },
             {
                 "@type": "Question",
+                "name": f"{name} 유품소각 비용은 얼마인가요?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "우체국 5호 박스(480×380×340mm) 1박스 기준 4만원~5만원입니다. 소각·폐기 대상 유품은 폐기물관리법에 따라 합법적으로 처리합니다."
+                }
+            },
+            {
+                "@type": "Question",
                 "name": f"{name} 유품정리 상담은 어떻게 진행되나요?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -130,8 +138,8 @@ def html_template(region_type, name, slug):
     intro = random.choice(SEO_INTROS)
     related_links = get_related_links(slug, region_type)
 
-    title = f"{name} 유품정리 · 고독사청소 · 특수청소 | 올바른 유품정리"
-    desc = f"올바른 유품정리는 {name} 지역 유품정리, 고독사청소, 특수청소를 진행합니다. 유품 분류, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다."
+    title = f"{name} 유품정리 · 유품소각 · 고독사청소 | 올바른 유품정리"
+    desc = f"올바른 유품정리는 {name} 지역 유품정리, 유품소각대행(1박스 4~5만원), 고독사청소, 특수청소를 진행합니다. 유품 분류, 합법 소각·폐기, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다."
     schemas = schema_json(region_type, name, slug, title, desc)
 
     return f"""<!DOCTYPE html>
@@ -141,7 +149,7 @@ def html_template(region_type, name, slug):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="{BASE_URL}/regions/{slug}/" />
   <meta name="description" content="{desc}" />
-  <meta name="keywords" content="{name} 유품정리, {name} 고독사청소, {name} 특수청소, {region_type} 유품정리, 올바른 유품정리" />
+  <meta name="keywords" content="{name} 유품정리, {name} 유품소각, {name} 고독사청소, {name} 특수청소, {region_type} 유품소각, {region_type} 유품정리, 올바른 유품정리" />
 
   <meta property="og:title" content="{title}" />
   <meta property="og:description" content="{desc}" />
@@ -600,6 +608,7 @@ def html_template(region_type, name, slug):
           <option>{name} 유품정리</option>
           <option>{name} 고독사청소</option>
           <option>{name} 특수청소</option>
+          <option>{name} 유품소각</option>
           <option>{name} 유품정리 + 특수청소</option>
         </select>
 
