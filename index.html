@@ -831,6 +831,15 @@
     .box-spec dl { margin: 0; display: grid; gap: 8px; }
     .box-spec dt { color: var(--main); font-weight: 800; font-size: 14px; }
     .box-spec dd { margin: 0 0 8px; color: var(--muted); font-size: 14px; }
+    .box-size-line {
+      margin: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .box-size-line strong { color: var(--main); font-weight: 800; }
+    .box-size-mm { font-size: 14px; }
     .legal-notice {
       background: linear-gradient(135deg, #2a4540, #365a4c);
       color: #fff;
@@ -1108,12 +1117,7 @@
           <div class="box-spec">
             <img class="box-visual" src="/image/main/incineration-box.png" alt="우체국 5호 택배상자 (유품소각 기준 박스)" />
             <strong style="color:var(--main);display:block;margin-bottom:12px;text-align:center;">우체국 5호 상자 기준</strong>
-            <dl>
-              <dt>크기</dt>
-              <dd>480 × 380 × 340 mm</dd>
-              <dt>가로 × 세로 × 높이</dt>
-              <dd>48cm × 38cm × 34cm</dd>
-            </dl>
+            <p class="box-size-line"><strong>가로×세로×높이</strong> 48cm × 38cm × 34cm <span class="box-size-mm">(480×380×340mm)</span></p>
           </div>
         </div>
         <div class="legal-notice">

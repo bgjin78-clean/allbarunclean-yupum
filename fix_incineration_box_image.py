@@ -2,23 +2,31 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parent
 
-OLD_CSS = """    .box-visual {
-      width: 120px;
-      height: 90px;
-      margin: 0 auto 16px;
-      background: linear-gradient(145deg, #c4a574, #a8844f);
-      border-radius: 4px;
-      box-shadow: 4px 6px 0 rgba(0,0,0,0.12);
-    }"""
+OLD_BLOCK = """            <dl>
+              <dt>크기</dt>
+              <dd>480 × 380 × 340 mm</dd>
+              <dt>가로 × 세로 × 높이</dt>
+              <dd>48cm × 38cm × 34cm</dd>
+            </dl>"""
 
-NEW_CSS = """    .box-visual {
-      display: block;
-      width: 200px;
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto 16px;
-      object-fit: contain;
-    }"""
+NEW_BLOCK = """            <p class="box-size-line"><strong>가로×세로×높이</strong> 48cm × 38cm × 34cm <span class="box-size-mm">(480×380×340mm)</span></p>"""
+
+OLD_CSS = """    .box-spec dl { margin: 0; display: grid; gap: 8px; }
+    .box-spec dt { color: var(--main); font-weight: 800; font-size: 14px; }
+    .box-spec dd { margin: 0 0 8px; color: var(--muted); font-size: 14px; }"""
+
+NEW_CSS = """    .box-spec dl { margin: 0; display: grid; gap: 8px; }
+    .box-spec dt { color: var(--main); font-weight: 800; font-size: 14px; }
+    .box-spec dd { margin: 0 0 8px; color: var(--muted); font-size: 14px; }
+    .box-size-line {
+      margin: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .box-size-line strong { color: var(--main); font-weight: 800; }
+    .box-size-mm { font-size: 14px; }"""
 
 OLD_HTML = '<div class="box-visual" aria-hidden="true"></div>'
 NEW_HTML = (
@@ -30,7 +38,9 @@ targets = [root / "index.html", *sorted((root / "regions").glob("*/index.html"))
 count = 0
 for path in targets:
     text = path.read_text(encoding="utf-8")
-    updated = text.replace(OLD_CSS, NEW_CSS).replace(OLD_HTML, NEW_HTML)
+    updated = text.replace(OLD_BLOCK, NEW_BLOCK)
+    if ".box-size-line" not in updated:
+        updated = updated.replace(OLD_CSS, NEW_CSS)
     if updated != text:
         path.write_text(updated, encoding="utf-8")
         count += 1
