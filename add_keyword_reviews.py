@@ -11,7 +11,7 @@ from generate_reviews import (
     header_html,
     footer_html,
     related_section_html,
-    pick_image_numbers,
+    pick_case_set_numbers,
 )
 
 # 우선순위(대표) 지역 중 해당 키워드 작업후기가 없는 곳에만 추가
@@ -330,8 +330,9 @@ def generate():
     contents = []
     for item in EXTRA_REVIEWS:
         content = dict(item)
-        content["before_nums"] = pick_image_numbers(content["path"], "before", 2)
-        content["after_nums"] = pick_image_numbers(content["path"], "after", 2)
+        nums = pick_case_set_numbers(content["path"], 2)
+        content["before_nums"] = nums
+        content["after_nums"] = nums
         contents.append(content)
 
         page_dir = reviews_dir / content["path"]

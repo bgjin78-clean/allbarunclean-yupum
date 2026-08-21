@@ -218,11 +218,17 @@ SHARED_CSS = """
 """
 
 
-def pick_image_numbers(slug, kind, count):
-    rng = random.Random(f"{slug}:{kind}")
+def pick_case_set_numbers(seed, count):
+    """image/cases before-NNN ↔ after-NNN 페어 중 count개 선택."""
+    rng = random.Random(str(seed))
     nums = list(range(1, 101))
     rng.shuffle(nums)
     return nums[:count]
+
+
+def pick_image_numbers(slug, kind, count):
+    """하위 호환: kind 무시, 세트 번호만 반환."""
+    return pick_case_set_numbers(f"{slug}:{kind}", count)
 
 
 def review_content(region_type, name, slug):
@@ -232,15 +238,14 @@ def review_content(region_type, name, slug):
     title = rng.choice(profile["titles"]).format(name=name, place=place)
     summary = rng.choice(profile["summaries"])
     details = [rng.choice(profile["details"]).format(name=name, place=place) for _ in range(2)]
-    before_nums = pick_image_numbers(slug, "before", 2)
-    after_nums = pick_image_numbers(slug, "after", 2)
+    case_nums = pick_case_set_numbers(slug, 2)
     return {
         "tag": profile["tag"],
         "title": title,
         "summary": summary,
         "details": details,
-        "before_nums": before_nums,
-        "after_nums": after_nums,
+        "before_nums": case_nums,
+        "after_nums": case_nums,
         "region_type": region_type,
         "name": name,
         "slug": slug,
@@ -441,7 +446,7 @@ def list_page_html(seoul_cards, gyeonggi_cards):
       <div class="title">
         <span>서울·경기 작업후기</span>
         <h2>실제 유품정리 작업후기</h2>
-        <p>작업 전 상태와 정리·마무리 후 공간이 자연스럽게 보이도록 구성했습니다. 전·후 사진은 현장마다 랜덤 배치됩니다.</p>
+        <p>작업 전·후 사진은 100세트 사례 중 지역별로 배치하며, 같은 번호의 before·after가 한 세트입니다.</p>
       </div>
 
       <div class="area-block">
