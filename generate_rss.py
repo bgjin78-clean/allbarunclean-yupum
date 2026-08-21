@@ -25,14 +25,16 @@ def generate():
 
     reviews_dir = root / "reviews"
     if reviews_dir.exists():
-        for folder in sorted(reviews_dir.iterdir()):
-            index_file = folder / "index.html"
-            if folder.is_dir() and index_file.exists():
-                html = index_file.read_text(encoding="utf-8")
-                title = get_title(html, f"{folder.name} 작업후기 | 올바른 유품정리")
-                link = f"{BASE_URL}/reviews/{folder.name}/"
-                desc = title.replace(f"| {SITE_TITLE}", "").replace("| 올바른 유품정리", "").strip()
-                items.append((title, link, desc))
+        for index_file in sorted(reviews_dir.rglob("index.html")):
+            rel = index_file.parent.relative_to(reviews_dir)
+            if str(rel) == ".":
+                continue
+            html = index_file.read_text(encoding="utf-8")
+            url_path = rel.as_posix()
+            title = get_title(html, f"{url_path} 작업후기 | 올바른 유품정리")
+            link = f"{BASE_URL}/reviews/{url_path}/"
+            desc = title.replace(f"| {SITE_TITLE}", "").replace("| 올바른 유품정리", "").strip()
+            items.append((title, link, desc))
 
     for folder in sorted(regions_dir.iterdir()):
         index_file = folder / "index.html"

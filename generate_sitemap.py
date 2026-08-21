@@ -16,9 +16,11 @@ def generate():
 
     reviews_dir = root / "reviews"
     if reviews_dir.exists():
-        for folder in sorted(reviews_dir.iterdir()):
-            if folder.is_dir() and (folder / "index.html").exists():
-                urls.append(f"{BASE_URL}/reviews/{folder.name}/")
+        for index_file in sorted(reviews_dir.rglob("index.html")):
+            rel = index_file.parent.relative_to(reviews_dir)
+            if str(rel) == ".":
+                continue
+            urls.append(f"{BASE_URL}/reviews/{rel.as_posix()}/")
 
     today = date.today().isoformat()
 

@@ -509,6 +509,9 @@ def generate():
     print(f"완료: reviews/index.html 생성")
     print(f"완료: 지역별 작업후기 {len(contents)}개 생성")
 
+    from add_keyword_reviews import generate as generate_extra
+    generate_extra()
+
 
 if __name__ == "__main__":
     generate()
