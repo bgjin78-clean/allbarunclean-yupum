@@ -231,6 +231,14 @@ def pick_image_numbers(slug, kind, count):
     return pick_case_set_numbers(f"{slug}:{kind}", count)
 
 
+def review_keywords(region_type, name, tag):
+    area = "서울" if region_type == "서울" else "경기"
+    return (
+        f"{name} 유품정리업체, {area} 유품정리업체, "
+        f"{name} {tag} 작업후기, 서울 경기 유품정리업체, 올바른 유품정리"
+    )
+
+
 def review_content(region_type, name, slug):
     rng = random.Random(slug)
     profile = rng.choice(SERVICE_PROFILES)
@@ -333,7 +341,11 @@ def detail_page_html(content):
     detail_paragraphs = "\n".join(f"        <p>{p}</p>" for p in content["details"])
     page_url = f"{BASE_URL}/reviews/{content['slug']}/"
     title = f"{content['title']} | {BRAND}"
-    desc = content["summary"]
+    desc = (
+        f"{content['summary']} "
+        f"{content['region_type']} {content['name']} 유품정리업체 {BRAND} 작업후기."
+    )
+    keywords = review_keywords(content["region_type"], content["name"], content["tag"])
 
     return f"""<!DOCTYPE html>
 <html lang="ko">
@@ -343,6 +355,7 @@ def detail_page_html(content):
   <link rel="canonical" href="{page_url}" />
   <title>{title}</title>
   <meta name="description" content="{desc}" />
+  <meta name="keywords" content="{keywords}" />
   <meta property="og:title" content="{title}" />
   <meta property="og:description" content="{desc}" />
   <meta property="og:type" content="article" />
@@ -379,6 +392,7 @@ def detail_page_html(content):
       <div class="article-box">
         <h1>{content["title"]}</h1>
         <p class="lead">{content["summary"]}</p>
+        <p>{content["region_type"]} {content["name"]} <strong>유품정리업체</strong> {BRAND}에서 진행한 실제 작업후기입니다.</p>
 {detail_paragraphs}
 
         <div class="photo-block">
@@ -394,11 +408,11 @@ def detail_page_html(content):
         </div>
 
         <div class="cta-box">
-          <h2>{content["name"]} 유품정리 상담</h2>
-          <p>비슷한 현장 상담이 필요하시면 사진과 주소를 남겨주시면 확인 후 연락드립니다.</p>
+          <h2>{content["name"]} 유품정리업체 상담</h2>
+          <p>비슷한 현장 상담이 필요하시면 사진과 주소를 남겨주시면 {content["name"]} 유품정리업체 기준으로 확인 후 연락드립니다.</p>
           <div class="btn-row">
             <a href="tel:{PHONE_LINK}" class="btn btn-primary">전화 상담 {PHONE}</a>
-            <a href="/regions/{content["slug"]}/" class="btn btn-outline">{content["name"]} 유품정리 안내</a>
+            <a href="/regions/{content["slug"]}/" class="btn btn-outline">{content["name"]} 유품정리업체 안내</a>
             <a href="/reviews/" class="btn btn-outline">작업후기 목록</a>
             <a href="/#contact" class="btn btn-outline">상담 접수</a>
           </div>
@@ -421,10 +435,11 @@ def list_page_html(seoul_cards, gyeonggi_cards):
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="{BASE_URL}/reviews/" />
-  <title>서울·경기 유품정리 작업후기 | {BRAND}</title>
-  <meta name="description" content="서울·경기 현장에서 진행한 유품정리, 고독사청소, 특수청소 작업후기를 지역별로 정리했습니다." />
-  <meta property="og:title" content="서울·경기 유품정리 작업후기 | {BRAND}" />
-  <meta property="og:description" content="서울 25개 구·경기 31개 시·군 유품정리 작업후기 모음" />
+  <title>서울·경기 유품정리업체 작업후기 | {BRAND}</title>
+  <meta name="description" content="서울·경기 유품정리업체 올바른 유품정리의 현장 작업후기. 유품정리, 고독사청소, 특수청소를 지역별로 확인할 수 있습니다." />
+  <meta name="keywords" content="서울 경기 유품정리업체, 서울 유품정리업체, 경기 유품정리업체, 유품정리 작업후기, 고독사청소 작업후기, 올바른 유품정리" />
+  <meta property="og:title" content="서울·경기 유품정리업체 작업후기 | {BRAND}" />
+  <meta property="og:description" content="서울 25개 구·경기 31개 시·군 유품정리업체 작업후기 모음" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{BASE_URL}/reviews/" />
   <link rel="icon" href="/favicon-allbarun.png" />
@@ -435,9 +450,9 @@ def list_page_html(seoul_cards, gyeonggi_cards):
 <main>
   <section class="hero">
     <div class="hero-inner">
-      <div class="badge">작업후기 모음</div>
-      <h1>지역별 유품정리 작업후기</h1>
-      <p>서울·경기 현장에서 진행한 유품정리, 고독사청소, 특수청소 작업후기를 지역별로 정리했습니다.</p>
+      <div class="badge">서울·경기 유품정리업체 작업후기</div>
+      <h1>지역별 유품정리업체 작업후기</h1>
+      <p>서울·경기 유품정리업체 올바른 유품정리에서 진행한 유품정리, 고독사청소, 특수청소 작업후기를 지역별로 정리했습니다.</p>
     </div>
   </section>
 
@@ -445,8 +460,8 @@ def list_page_html(seoul_cards, gyeonggi_cards):
     <div class="wrap">
       <div class="title">
         <span>서울·경기 작업후기</span>
-        <h2>실제 유품정리 작업후기</h2>
-        <p>작업 전·후 사진은 100세트 사례 중 지역별로 배치하며, 같은 번호의 before·after가 한 세트입니다.</p>
+        <h2>실제 유품정리업체 작업후기</h2>
+        <p>서울·경기 유품정리업체 현장 작업 전·후 사진입니다. 100세트 사례 중 지역별로 배치하며, 같은 번호의 before·after가 한 세트입니다.</p>
       </div>
 
       <div class="area-block">

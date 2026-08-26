@@ -203,8 +203,14 @@ def extra_detail_page_html(content):
     detail_paragraphs = "\n".join(f"        <p>{p}</p>" for p in content["details"])
     page_url = f"{BASE_URL}/reviews/{content['path']}/"
     title = f"{content['title']} | {BRAND}"
-    desc = content["summary"]
-    keywords = content["keywords"]
+    desc = (
+        f"{content['summary']} "
+        f"{content['region_type']} {content['name']} 유품정리업체 {BRAND} 작업후기."
+    )
+    keywords = (
+        f"{content['name']} 유품정리업체, {content['region_type']} 유품정리업체, "
+        f"{content['keywords']}, 서울 경기 유품정리업체"
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="ko">
@@ -251,6 +257,7 @@ def extra_detail_page_html(content):
       <div class="article-box">
         <h1>{content["title"]}</h1>
         <p class="lead">{content["summary"]}</p>
+        <p>{content["region_type"]} {content["name"]} <strong>유품정리업체</strong> {BRAND}에서 진행한 실제 작업후기입니다.</p>
 {detail_paragraphs}
 
         <div class="photo-block">
@@ -266,11 +273,11 @@ def extra_detail_page_html(content):
         </div>
 
         <div class="cta-box">
-          <h2>{content["name"]} {content["tag"]} 상담</h2>
-          <p>비슷한 현장 상담이 필요하시면 사진과 주소를 남겨주시면 확인 후 연락드립니다.</p>
+          <h2>{content["name"]} 유품정리업체 · {content["tag"]} 상담</h2>
+          <p>비슷한 현장 상담이 필요하시면 사진과 주소를 남겨주시면 {content["name"]} 유품정리업체 기준으로 확인 후 연락드립니다.</p>
           <div class="btn-row">
             <a href="tel:{PHONE_LINK}" class="btn btn-primary">전화 상담 {PHONE}</a>
-            <a href="/regions/{content["slug"]}/" class="btn btn-outline">{content["name"]} 유품정리 안내</a>
+            <a href="/regions/{content["slug"]}/" class="btn btn-outline">{content["name"]} 유품정리업체 안내</a>
             <a href="/reviews/" class="btn btn-outline">작업후기 목록</a>
             <a href="/#contact" class="btn btn-outline">상담 접수</a>
           </div>
@@ -290,7 +297,7 @@ def extra_section_html(contents):
     cards = "".join(extra_card_html(c) for c in contents)
     return f"""<!-- extra-keyword-reviews-start -->
       <div class="area-block">
-        <h3>유품정리 · 고인집정리 작업후기</h3>
+        <h3>유품정리업체 · 유품정리 · 고인집정리 작업후기</h3>
         <div class="review-grid">
 {cards}
         </div>
