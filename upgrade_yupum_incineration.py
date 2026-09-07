@@ -103,7 +103,7 @@ def incineration_section(region_type: str, name: str) -> str:
                 <tr><th>구분</th><th>비용</th></tr>
               </thead>
               <tbody>
-                <tr><td>1 box 기준</td><td><strong>4만원 ~ 5만원</strong></td></tr>
+                <tr><td>1 box 기준</td><td><strong>5만원</strong></td></tr>
               </tbody>
             </table>
             <p style="color:var(--muted);font-size:14px;margin-top:12px;">
@@ -147,7 +147,7 @@ def update_meta(html: str, region_type: str, name: str) -> str:
     html = re.sub(
         r'(<meta name="description" content=")([^"]*)(")',
         lambda m: (
-            f'{m.group(1)}{name} 지역 유품정리, 유품소각대행(1박스 4~5만원), 고독사청소, 특수청소. '
+            f'{m.group(1)}{name} 지역 유품정리, 유품소각대행(1박스 5만원), 고독사청소, 특수청소. '
             f"유품 분류, 합법 소각·폐기, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다.{m.group(3)}"
         ),
         html,
@@ -170,7 +170,7 @@ def update_meta(html: str, region_type: str, name: str) -> str:
         r'(<meta property="og:description" content=")([^"]*)(")',
         lambda m: (
             f'{m.group(1)}{name} 유품정리·유품소각대행, 고독사청소, 특수청소. '
-            f"우체국 5호 박스 기준 4~5만원, 폐기물관리법 준수 합법 소각 안내.{m.group(3)}"
+            f"우체국 5호 박스 기준 5만원, 폐기물관리법 준수 합법 소각 안내.{m.group(3)}"
         ),
         html,
         count=1,
@@ -186,7 +186,7 @@ def update_faq_schema(html: str, name: str) -> str:
       "name": "{name} 유품소각 비용은 얼마인가요?",
       "acceptedAnswer": {{
         "@type": "Answer",
-        "text": "우체국 5호 박스(480×380×340mm) 1박스 기준 4만원~5만원입니다. 소각·폐기 대상 유품은 폐기물관리법에 따라 합법적으로 처리합니다."
+        "text": "우체국 5호 박스(480×380×340mm) 1박스 기준 5만원입니다. 소각·폐기 대상 유품은 폐기물관리법에 따라 합법적으로 처리합니다."
       }}
     }},
 """
@@ -208,7 +208,7 @@ def update_service_schema(html: str) -> str:
         "item": {
           "@type": "Service",
           "name": "유품소각",
-          "description": "유품 소각대행, 우체국 5호 박스 기준 4~5만원",
+          "description": "유품 소각대행, 우체국 5호 박스 기준 5만원",
           "provider": {
             "@type": "LocalBusiness",
             "name": "올바른 유품정리"
@@ -256,7 +256,7 @@ def add_price_card(html: str, name: str) -> str:
       </div>"""
     card = """        <div class="card">
           <strong>유품소각</strong>
-          <div class="price">4만원 <span>~5만원/box</span></div>
+          <div class="price">5만원 <span>/box</span></div>
           <p>우체국 5호 박스(48×38×34cm) 1박스 기준입니다.</p>
         </div>
 """
@@ -301,7 +301,7 @@ def add_content_heading(html: str, name: str) -> str:
         <h3>{name} 유품소각(소각대행) 안내</h3>
         <p>
           {name} 유품소각은 유품정리 과정에서 소각·폐기가 필요한 물품을 분류한 뒤,
-          우체국 5호 박스(480×380×340mm) 기준 1박스당 4만원~5만원으로 합법 처리 경로를 안내합니다.
+          우체국 5호 박스(480×380×340mm) 기준 1박스당 5만원으로 합법 처리 경로를 안내합니다.
           무단 소각은 폐기물관리법 위반으로 최대 1천만원 이하 벌금이 부과될 수 있으므로
           반드시 허가된 방식으로 진행해야 합니다.
         </p>
@@ -380,7 +380,7 @@ def upgrade_index(path: Path) -> bool:
                 <tr><th>구분</th><th>비용</th></tr>
               </thead>
               <tbody>
-                <tr><td>1 box 기준</td><td><strong>4만원 ~ 5만원</strong></td></tr>
+                <tr><td>1 box 기준</td><td><strong>5만원</strong></td></tr>
               </tbody>
             </table>
             <p style="color:var(--muted);font-size:14px;margin-top:12px;">
@@ -419,7 +419,7 @@ def upgrade_index(path: Path) -> bool:
     )
     html = re.sub(
         r'content="올바른 유품정리는 서울·경기 전 지역 유품정리, 고독사청소, 특수청소를',
-        'content="올바른 유품정리는 서울·경기 전 지역 유품정리, 유품소각대행(1박스 4~5만원), 고독사청소, 특수청소를',
+        'content="올바른 유품정리는 서울·경기 전 지역 유품정리, 유품소각대행(1박스 5만원), 고독사청소, 특수청소를',
         html,
     )
     if "서울 유품소각" not in html:
@@ -435,7 +435,7 @@ def upgrade_index(path: Path) -> bool:
             """        <h3>서울·경기 유품소각(소각대행) 안내</h3>
         <p>
           유품소각은 유품정리 과정에서 소각·폐기가 필요한 물품을 분류한 뒤,
-          우체국 5호 박스(480×380×340mm) 기준 1박스당 4만원~5만원으로 합법 처리하는 서비스입니다.
+          우체국 5호 박스(480×380×340mm) 기준 1박스당 5만원으로 합법 처리하는 서비스입니다.
           강남·송파·수원·성남 등 지역별로 <a href="/regions/gangnam/#incineration">강남구 유품소각</a>,
           <a href="/regions/suwon/#incineration">수원시 유품소각</a> 페이지에서 상세 안내를 확인할 수 있습니다.
           무단 소각은 폐기물관리법 위반으로 최대 1천만원 이하 벌금이 부과될 수 있습니다.
@@ -453,7 +453,7 @@ def upgrade_index(path: Path) -> bool:
             """        <div class="service-card">
           <b>05</b>
           <h3>유품소각</h3>
-          <p>소각·폐기 대상 유품을 폐기물관리법에 따라 합법적으로 소각·처리합니다. 1박스 4~5만원.</p>
+          <p>소각·폐기 대상 유품을 폐기물관리법에 따라 합법적으로 소각·처리합니다. 1박스 5만원.</p>
         </div>
         <div class="service-card">
           <b>06</b>
@@ -486,7 +486,7 @@ def upgrade_index(path: Path) -> bool:
           <strong>가족이 현장에 꼭 있어야 하나요?</strong>""",
             """        <div class="faq">
           <strong>서울·경기 유품소각 비용은 얼마인가요?</strong>
-          <p>우체국 5호 박스(480×380×340mm) 1박스 기준 4만원~5만원입니다. 폐기물관리법에 따라 합법적으로 처리합니다.</p>
+          <p>우체국 5호 박스(480×380×340mm) 1박스 기준 5만원입니다. 폐기물관리법에 따라 합법적으로 처리합니다.</p>
         </div>
         <div class="faq">
           <strong>가족이 현장에 꼭 있어야 하나요?</strong>""",

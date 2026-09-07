@@ -78,7 +78,7 @@ def schema_json(region_type, name, slug, title, desc):
                 "name": f"{name} 유품소각 비용은 얼마인가요?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "우체국 5호 박스(480×380×340mm) 1박스 기준 4만원~5만원입니다. 소각·폐기 대상 유품은 폐기물관리법에 따라 합법적으로 처리합니다."
+                    "text": "우체국 5호 박스(480×380×340mm) 1박스 기준 5만원입니다. 소각·폐기 대상 유품은 폐기물관리법에 따라 합법적으로 처리합니다."
                 }
             },
             {
@@ -139,7 +139,7 @@ def html_template(region_type, name, slug):
     related_links = get_related_links(slug, region_type)
 
     title = f"{name} 유품정리 · 유품소각 · 고독사청소 | 올바른 유품정리"
-    desc = f"올바른 유품정리는 {name} 지역 유품정리, 유품소각대행(1박스 4~5만원), 고독사청소, 특수청소를 진행합니다. 유품 분류, 합법 소각·폐기, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다."
+    desc = f"올바른 유품정리는 {name} 지역 유품정리, 유품소각대행(1박스 5만원), 고독사청소, 특수청소를 진행합니다. 유품 분류, 합법 소각·폐기, 공간 정리, 소독, 폐기물 반출까지 상담 가능합니다."
     schemas = schema_json(region_type, name, slug, title, desc)
 
     return f"""<!DOCTYPE html>
