@@ -1,6 +1,8 @@
 {
   "trailingSlash": true,
   "redirects": [
-    { "source": "/regions_backup/:path*", "destination": "/regions/:path*", "permanent": true }
+    { "source": "/regions_backup/:slug/", "destination": "/regions/:slug/", "permanent": true },
+    { "source": "/regions_backup/:slug/index.html", "destination": "/regions/:slug/", "permanent": true },
+    { "source": "/regions_backup/", "destination": "/", "permanent": true }
   ]
 }
