@@ -2,6 +2,8 @@ from pathlib import Path
 import random
 from datetime import date
 
+from region_local import REGION_LOCAL, region_link
+
 BASE_URL = "https://www.yupum.allbarunclean.com"
 PHONE = "010-4393-2414"
 PHONE_LINK = "01043932414"
@@ -46,6 +48,7 @@ SERVICE_PROFILES = [
         "details": [
             "이번 {name} 현장은 {place} 공간에서 유품의 양과 보관해야 할 물품을 먼저 확인한 뒤 정리 범위를 나누어 진행했습니다. 가족분께서 남기고 싶은 물품과 정리가 필요한 물품을 구분하는 과정을 차분히 안내했습니다.",
             "작업 전에는 반출 동선과 엘리베이터 사용 여부를 확인했고, 유품 분류 후 공간별로 정리와 폐기물 반출을 순서대로 진행했습니다. 마무리 단계에서 현장 상태를 함께 확인했습니다.",
+            "사진·편지·통장·인감처럼 가족분이 직접 확인해야 하는 물품은 따로 상자에 모아 두고, 의류와 생활용품은 기증 가능한 것과 폐기할 것으로 나눠 {place} 방마다 순서대로 비웠습니다.",
         ],
     },
     {
@@ -61,6 +64,7 @@ SERVICE_PROFILES = [
         "details": [
             "{name} {place} 현장은 일반 정리와는 다른 절차가 필요한 경우였습니다. 오염 범위를 확인한 뒤 정리 순서와 소독·냄새 저감 작업 범위를 먼저 안내했습니다.",
             "물품 정리와 폐기물 반출을 진행한 후 필요한 특수청소·소독 작업을 마무리했습니다. 작업 전후 상태를 확인하며 진행했습니다.",
+            "오염이 스며든 침구와 바닥재는 밀봉해 먼저 반출했고, 남은 공간은 소독과 냄새 저감 작업을 반복했습니다. 이웃 세대에 냄새가 퍼지지 않도록 출입구와 복도 쪽을 먼저 차단한 뒤 작업했습니다.",
         ],
     },
     {
@@ -76,6 +80,7 @@ SERVICE_PROFILES = [
         "details": [
             "{name} 현장은 공간 사용 이력과 오염 상태를 먼저 확인했습니다. {place} 구조에 맞춰 작업 동선을 정한 뒤 오염 정리와 소독을 진행했습니다.",
             "정리 과정에서 발생한 폐기물은 분류해 반출했고, 마무리 단계에서 공간 상태를 다시 확인했습니다.",
+            "오랫동안 사용하지 않은 공간이라 먼지와 곰팡이가 쌓여 있었습니다. 물품을 먼저 비운 뒤 벽면과 바닥, 주방·욕실 순서로 오염을 제거하고 환기와 소독으로 마무리했습니다.",
         ],
     },
     {
@@ -91,6 +96,7 @@ SERVICE_PROFILES = [
         "details": [
             "{name} {place}에서는 유품 확인과 보관품 분류를 먼저 진행했습니다. 이후 오염 정리와 소독이 필요한 구역을 나누어 특수청소를 함께 진행했습니다.",
             "가족분께서 요청하신 범위 안에서 유품정리와 특수청소를 순서대로 마무리했습니다.",
+            "유품 중 보관이 필요한 물건은 오염 구역과 분리해 먼저 옮겨 드렸고, 이후 오염된 가구와 침구를 반출한 뒤 소독을 진행했습니다. 유품 확인과 청소가 섞이지 않도록 작업 구역을 나눈 것이 핵심이었습니다.",
         ],
     },
 ]
@@ -128,7 +134,7 @@ SHARED_CSS = """
     }
     .hero {
       padding:84px 20px 72px; color:#fff;
-      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.png") center/cover no-repeat;
+      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.jpg") center/cover no-repeat;
     }
     .hero-inner, .wrap { max-width:1180px; margin:0 auto; }
     .badge {
@@ -165,7 +171,20 @@ SHARED_CSS = """
       background:var(--card); border:1px solid var(--line); border-radius:28px;
       padding:38px; box-shadow:0 12px 34px rgba(54,90,76,0.08);
     }
-    .article-box h1 { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .article-box .article-title { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .case-info {
+      list-style:none; margin:0 0 24px; padding:18px 22px; border-radius:16px;
+      background:var(--soft); border:1px solid var(--line);
+      display:grid; grid-template-columns:repeat(3,1fr); gap:8px 18px;
+    }
+    .case-info li { color:var(--text); font-size:15px; }
+    .case-info strong { color:var(--main); margin-right:6px; }
+    .local-note { padding-left:14px; border-left:3px solid var(--point); }
+    .sibling-reviews { margin-top:30px; }
+    .sibling-reviews h2 { color:var(--main); font-size:22px; margin:0 0 12px; }
+    .sibling-reviews ul { margin:0; padding-left:18px; }
+    .sibling-reviews li { margin-bottom:6px; }
+    .sibling-reviews a { color:var(--main); font-weight:700; text-decoration:underline; }
     .article-box .lead { color:var(--muted); font-size:17px; margin:0 0 28px; }
     .article-box p { color:var(--muted); margin:0 0 16px; }
     .photo-block { margin-top:34px; }
@@ -210,7 +229,8 @@ SHARED_CSS = """
     }
     @media (max-width:900px) {
       .nav-links { display:none; }
-      .hero h1, .article-box h1 { font-size:30px; }
+      .hero h1, .article-box .article-title { font-size:30px; }
+      .case-info { grid-template-columns:1fr; }
       .review-grid, .photo-grid, .related-grid { grid-template-columns:1fr; }
       section { padding:58px 20px; }
       .floating-call { left:18px; right:18px; text-align:center; }
@@ -245,10 +265,11 @@ def review_content(region_type, name, slug):
     place = rng.choice(PLACE_TYPES)
     title = rng.choice(profile["titles"]).format(name=name, place=place)
     summary = rng.choice(profile["summaries"])
-    details = [rng.choice(profile["details"]).format(name=name, place=place) for _ in range(2)]
+    details = [d.format(name=name, place=place) for d in rng.sample(profile["details"], 2)]
     case_nums = pick_case_set_numbers(slug, 2)
     return {
         "tag": profile["tag"],
+        "place": place,
         "title": title,
         "summary": summary,
         "details": details,
@@ -329,13 +350,44 @@ def review_card_html(content, link_text="자세히 보기"):
         </article>"""
 
 
-def detail_page_html(content):
+def case_info_html(content):
+    return f"""        <ul class="case-info">
+          <li><strong>지역</strong>{content["region_type"]} {content["name"]}</li>
+          <li><strong>주거 형태</strong>{content["place"]}</li>
+          <li><strong>작업 구분</strong>{content["tag"]}</li>
+        </ul>"""
+
+
+def local_note_html(content):
+    note = REGION_LOCAL.get(content["slug"])
+    if not note:
+        return ""
+    return f'        <p class="local-note">{note}</p>'
+
+
+def sibling_reviews_html(name, siblings):
+    if not siblings:
+        return ""
+    items = "\n".join(
+        f'            <li><a href="{href}">{title}</a> · {tag}</li>'
+        for href, tag, title in siblings
+    )
+    return f"""
+        <div class="sibling-reviews">
+          <h2>{name} 다른 작업후기</h2>
+          <ul>
+{items}
+          </ul>
+        </div>"""
+
+
+def detail_page_html(content, siblings=()):
     before_imgs = "\n".join(
-        f'          <img src="/image/cases/before-{n:03d}.jpg" alt="{content["name"]} 유품정리 작업 전 현장">'
+        f'          <img loading="lazy" decoding="async" src="/image/cases/before-{n:03d}.jpg" alt="{content["name"]} {content["place"]} {content["tag"]} 작업 전 현장">'
         for n in content["before_nums"]
     )
     after_imgs = "\n".join(
-        f'          <img src="/image/cases/after-{n:03d}.jpg" alt="{content["name"]} 유품정리 작업 후 현장">'
+        f'          <img loading="lazy" decoding="async" src="/image/cases/after-{n:03d}.jpg" alt="{content["name"]} {content["place"]} {content["tag"]} 작업 후 현장">'
         for n in content["after_nums"]
     )
     detail_paragraphs = "\n".join(f"        <p>{p}</p>" for p in content["details"])
@@ -390,9 +442,11 @@ def detail_page_html(content):
   <section>
     <div class="wrap">
       <div class="article-box">
-        <h1>{content["title"]}</h1>
+        <h2 class="article-title">{content["title"]}</h2>
         <p class="lead">{content["summary"]}</p>
+{case_info_html(content)}
         <p>{content["region_type"]} {content["name"]} <strong>유품정리업체</strong> {BRAND}에서 진행한 실제 작업후기입니다.</p>
+{local_note_html(content)}
 {detail_paragraphs}
 
         <div class="photo-block">
@@ -412,11 +466,12 @@ def detail_page_html(content):
           <p>비슷한 현장 상담이 필요하시면 사진과 주소를 남겨주시면 {content["name"]} 유품정리업체 기준으로 확인 후 연락드립니다.</p>
           <div class="btn-row">
             <a href="tel:{PHONE_LINK}" class="btn btn-primary">전화 상담 {PHONE}</a>
-            <a href="/regions/{content["slug"]}/" class="btn btn-outline">{content["name"]} 유품정리업체 안내</a>
+            <a href="{region_link(content["slug"])}" class="btn btn-outline">{content["name"]} 유품정리업체 안내</a>
             <a href="/reviews/" class="btn btn-outline">작업후기 목록</a>
             <a href="/#contact" class="btn btn-outline">상담 접수</a>
           </div>
         </div>
+{sibling_reviews_html(content["name"], siblings)}
       </div>
     </div>
   </section>
@@ -501,6 +556,8 @@ def list_page_html(seoul_cards, gyeonggi_cards):
 
 
 def generate():
+    from add_keyword_reviews import EXTRA_REVIEWS
+
     root = Path(__file__).resolve().parent
     reviews_dir = root / "reviews"
     reviews_dir.mkdir(exist_ok=True)
@@ -510,9 +567,17 @@ def generate():
         content = review_content(region_type, name, slug)
         contents.append(content)
 
+        siblings = [
+            (f"/reviews/{e['path']}/", e["tag"], e["title"])
+            for e in EXTRA_REVIEWS
+            if e["slug"] == slug
+        ]
         region_dir = reviews_dir / slug
         region_dir.mkdir(exist_ok=True)
-        (region_dir / "index.html").write_text(detail_page_html(content), encoding="utf-8")
+        (region_dir / "index.html").write_text(
+            detail_page_html(content, siblings),
+            encoding="utf-8",
+        )
 
     seoul_cards = "".join(
         review_card_html(c) for c in contents if c["region_type"] == "서울"

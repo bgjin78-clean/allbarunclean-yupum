@@ -30,7 +30,7 @@ NEW_CSS = """    .box-spec dl { margin: 0; display: grid; gap: 8px; }
 
 OLD_HTML = '<div class="box-visual" aria-hidden="true"></div>'
 NEW_HTML = (
-    '<img class="box-visual" src="/image/main/incineration-box.png" '
+    '<img loading="lazy" decoding="async" class="box-visual" src="/image/main/incineration-box.png" '
     'alt="우체국 5호 택배상자 (유품소각 기준 박스)" />'
 )
 

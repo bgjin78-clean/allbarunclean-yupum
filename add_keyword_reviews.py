@@ -12,11 +12,18 @@ from generate_reviews import (
     footer_html,
     related_section_html,
     pick_case_set_numbers,
+    case_info_html,
+    local_note_html,
+    sibling_reviews_html,
+    review_content,
+    REGIONS,
 )
+from region_local import region_link
 
 # 우선순위(대표) 지역 중 해당 키워드 작업후기가 없는 곳에만 추가
 # 1차: 유품정리(강남·송파·용산·용인·고양) + 고인집정리(서초·마포·수원·성남·화성)
 # 2차: 고인집정리(강남·송파·용산·용인·고양·남양주) + 유품정리(서초·마포·성남·남양주)
+# 3차: 유품정리(강서) + 고인집정리(노원)
 EXTRA_REVIEWS = [
     {
         "region_type": "서울",
@@ -339,6 +346,41 @@ EXTRA_REVIEWS = [
             "큰 가구는 분해 후 내렸고, 남은 생활폐기물은 분류해 반출했습니다. 남양주시 유품정리는 빌라형 현장에서 반출 동선을 먼저 잡는 것이 안전하고 빨랐습니다.",
         ],
     },
+    # --- 3차 추가 2건 ---
+    {
+        "region_type": "서울",
+        "name": "강서구",
+        "slug": "gangseo",
+        "path": "gangseo/yupum",
+        "tag": "유품정리",
+        "place": "빌라",
+        "title": "강서구 화곡동 빌라 유품정리 작업후기",
+        "summary": "강서구 화곡동 3층 빌라에서 어머님 유품을 분류하고 방 세 칸을 정리한 유품정리 작업후기입니다.",
+        "keywords": "강서구 유품정리, 화곡동 유품정리, 강서구 빌라 유품정리, 서울 유품정리 작업후기",
+        "details": [
+            "강서구 화곡동 다세대 빌라 3층, 엘리베이터가 없는 현장이었습니다. 따님께서 사진으로 방 세 칸과 베란다 상태를 먼저 보내 주셔서, 상담 단계에서 물품량과 계단 반출 인원을 미리 정할 수 있었습니다.",
+            "작업 당일에는 안방 장롱과 서랍장부터 확인했습니다. 앨범 네 권과 편지 묶음, 통장·도장이 든 손가방은 별도 상자에 담아 가족분께 바로 전달했고, 새것에 가까운 이불과 겨울옷은 기증용으로 따로 분류했습니다.",
+            "건물 앞 골목이 좁아 차량을 큰길 쪽에 세우고, 계단에는 모서리 보호재를 붙인 뒤 소형 가구부터 내렸습니다. 장롱과 침대는 현장에서 분해해 옮겼고, 이웃 세대 출입 시간을 피해 오전 중에 대형 반출을 끝냈습니다.",
+            "마지막으로 빈 방과 베란다, 주방 수납장 안쪽까지 남은 물건이 없는지 가족분과 함께 확인했습니다. 화곡동처럼 빌라가 밀집한 지역은 물품량보다 계단과 골목 동선이 작업 시간을 좌우한다는 점을 다시 확인한 현장이었습니다.",
+        ],
+    },
+    {
+        "region_type": "서울",
+        "name": "노원구",
+        "slug": "nowon",
+        "path": "nowon/goinjip",
+        "tag": "고인집정리",
+        "place": "아파트",
+        "title": "노원구 상계동 아파트 고인집정리 작업후기",
+        "summary": "노원구 상계동 30년 차 아파트에서 아버님이 오래 사시던 집을 매도 전에 비운 고인집정리 작업후기입니다.",
+        "keywords": "노원구 고인집정리, 상계동 고인집정리, 노원구 아파트 고인집정리, 서울 고인집정리 작업후기",
+        "details": [
+            "노원구 상계동 1990년대 준공 아파트, 아버님께서 30년 가까이 혼자 지내시던 집이었습니다. 매도 계약 일정이 잡혀 있어 유품 확인과 집 비우기를 이틀 안에 끝내야 하는 상황이었습니다.",
+            "첫날은 가족분과 함께 서재와 안방을 중심으로 보관품을 골랐습니다. 오래된 사진첩과 족보, 훈장 상자, 계약서류는 따로 모았고, 책장 가득한 책은 헌책 수거가 가능한 것과 폐기할 것을 나눠 묶었습니다.",
+            "둘째 날에는 관리사무소에 엘리베이터 사용을 미리 신청해 두고, 벽면 보양 후 장롱·책장·소파 같은 대형 가구를 반출했습니다. 주방 살림과 베란다 화분, 창고에 쌓인 공구류까지 정리해 집 전체를 비웠습니다.",
+            "작업 후에는 바닥과 싱크대, 붙박이장 안쪽을 다시 확인하고 간단한 청소로 마무리했습니다. 상계동처럼 장기 거주 세대가 많은 단지는 물품량이 예상보다 많아, 사전 사진 상담으로 일정을 이틀로 나눈 것이 도움이 됐습니다.",
+        ],
+    },
 ]
 
 
@@ -352,13 +394,13 @@ def extra_card_html(content):
         </article>"""
 
 
-def extra_detail_page_html(content):
+def extra_detail_page_html(content, siblings=()):
     before_imgs = "\n".join(
-        f'          <img src="/image/cases/before-{n:03d}.jpg" alt="{content["name"]} {content["tag"]} 작업 전 현장">'
+        f'          <img loading="lazy" decoding="async" src="/image/cases/before-{n:03d}.jpg" alt="{content["name"]} {content["place"]} {content["tag"]} 작업 전 현장">'
         for n in content["before_nums"]
     )
     after_imgs = "\n".join(
-        f'          <img src="/image/cases/after-{n:03d}.jpg" alt="{content["name"]} {content["tag"]} 작업 후 현장">'
+        f'          <img loading="lazy" decoding="async" src="/image/cases/after-{n:03d}.jpg" alt="{content["name"]} {content["place"]} {content["tag"]} 작업 후 현장">'
         for n in content["after_nums"]
     )
     detail_paragraphs = "\n".join(f"        <p>{p}</p>" for p in content["details"])
@@ -416,9 +458,11 @@ def extra_detail_page_html(content):
   <section>
     <div class="wrap">
       <div class="article-box">
-        <h1>{content["title"]}</h1>
+        <h2 class="article-title">{content["title"]}</h2>
         <p class="lead">{content["summary"]}</p>
+{case_info_html(content)}
         <p>{content["region_type"]} {content["name"]} <strong>유품정리업체</strong> {BRAND}에서 진행한 실제 작업후기입니다.</p>
+{local_note_html(content)}
 {detail_paragraphs}
 
         <div class="photo-block">
@@ -438,11 +482,12 @@ def extra_detail_page_html(content):
           <p>비슷한 현장 상담이 필요하시면 사진과 주소를 남겨주시면 {content["name"]} 유품정리업체 기준으로 확인 후 연락드립니다.</p>
           <div class="btn-row">
             <a href="tel:{PHONE_LINK}" class="btn btn-primary">전화 상담 {PHONE}</a>
-            <a href="/regions/{content["slug"]}/" class="btn btn-outline">{content["name"]} 유품정리업체 안내</a>
+            <a href="{region_link(content["slug"])}" class="btn btn-outline">{content["name"]} 유품정리업체 안내</a>
             <a href="/reviews/" class="btn btn-outline">작업후기 목록</a>
             <a href="/#contact" class="btn btn-outline">상담 접수</a>
           </div>
         </div>
+{sibling_reviews_html(content["name"], siblings)}
       </div>
     </div>
   </section>
@@ -495,6 +540,11 @@ def generate():
     root = Path(__file__).resolve().parent
     reviews_dir = root / "reviews"
 
+    base_reviews = {
+        slug: review_content(region_type, name, slug)
+        for region_type, name, slug in REGIONS
+    }
+
     contents = []
     for item in EXTRA_REVIEWS:
         content = dict(item)
@@ -503,10 +553,18 @@ def generate():
         content["after_nums"] = nums
         contents.append(content)
 
+        base = base_reviews[content["slug"]]
+        siblings = [(f"/reviews/{content['slug']}/", base["tag"], base["title"])]
+        siblings += [
+            (f"/reviews/{e['path']}/", e["tag"], e["title"])
+            for e in EXTRA_REVIEWS
+            if e["slug"] == content["slug"] and e["path"] != content["path"]
+        ]
+
         page_dir = reviews_dir / content["path"]
         page_dir.mkdir(parents=True, exist_ok=True)
         (page_dir / "index.html").write_text(
-            extra_detail_page_html(content),
+            extra_detail_page_html(content, siblings),
             encoding="utf-8",
         )
 

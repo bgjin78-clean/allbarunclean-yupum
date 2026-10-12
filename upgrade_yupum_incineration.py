@@ -111,7 +111,7 @@ def incineration_section(region_type: str, name: str) -> str:
             </p>
           </div>
           <div class="box-spec">
-            <img class="box-visual" src="/image/main/incineration-box.png" alt="우체국 5호 택배상자 (유품소각 기준 박스)" />
+            <img loading="lazy" decoding="async" class="box-visual" src="/image/main/incineration-box.png" alt="우체국 5호 택배상자 (유품소각 기준 박스)" />
             <strong style="color:var(--main);display:block;margin-bottom:12px;text-align:center;">우체국 5호 상자 기준</strong>
             <p class="box-size-line"><strong>가로×세로×높이</strong> 48cm × 38cm × 34cm <span class="box-size-mm">(480×380×340mm)</span></p>
           </div>
@@ -388,7 +388,7 @@ def upgrade_index(path: Path) -> bool:
             </p>
           </div>
           <div class="box-spec">
-            <img class="box-visual" src="/image/main/incineration-box.png" alt="우체국 5호 택배상자 (유품소각 기준 박스)" />
+            <img loading="lazy" decoding="async" class="box-visual" src="/image/main/incineration-box.png" alt="우체국 5호 택배상자 (유품소각 기준 박스)" />
             <strong style="color:var(--main);display:block;margin-bottom:12px;text-align:center;">우체국 5호 상자 기준</strong>
             <p class="box-size-line"><strong>가로×세로×높이</strong> 48cm × 38cm × 34cm <span class="box-size-mm">(480×380×340mm)</span></p>
           </div>

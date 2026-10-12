@@ -45,7 +45,7 @@
     }
     .hero {
       padding:84px 20px 72px; color:#fff;
-      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.png") center/cover no-repeat;
+      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.jpg") center/cover no-repeat;
     }
     .hero-inner, .wrap { max-width:1180px; margin:0 auto; }
     .badge {
@@ -82,7 +82,20 @@
       background:var(--card); border:1px solid var(--line); border-radius:28px;
       padding:38px; box-shadow:0 12px 34px rgba(54,90,76,0.08);
     }
-    .article-box h1 { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .article-box .article-title { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .case-info {
+      list-style:none; margin:0 0 24px; padding:18px 22px; border-radius:16px;
+      background:var(--soft); border:1px solid var(--line);
+      display:grid; grid-template-columns:repeat(3,1fr); gap:8px 18px;
+    }
+    .case-info li { color:var(--text); font-size:15px; }
+    .case-info strong { color:var(--main); margin-right:6px; }
+    .local-note { padding-left:14px; border-left:3px solid var(--point); }
+    .sibling-reviews { margin-top:30px; }
+    .sibling-reviews h2 { color:var(--main); font-size:22px; margin:0 0 12px; }
+    .sibling-reviews ul { margin:0; padding-left:18px; }
+    .sibling-reviews li { margin-bottom:6px; }
+    .sibling-reviews a { color:var(--main); font-weight:700; text-decoration:underline; }
     .article-box .lead { color:var(--muted); font-size:17px; margin:0 0 28px; }
     .article-box p { color:var(--muted); margin:0 0 16px; }
     .photo-block { margin-top:34px; }
@@ -127,7 +140,8 @@
     }
     @media (max-width:900px) {
       .nav-links { display:none; }
-      .hero h1, .article-box h1 { font-size:30px; }
+      .hero h1, .article-box .article-title { font-size:30px; }
+      .case-info { grid-template-columns:1fr; }
       .review-grid, .photo-grid, .related-grid { grid-template-columns:1fr; }
       section { padding:58px 20px; }
       .floating-call { left:18px; right:18px; text-align:center; }
@@ -142,7 +156,7 @@
     "author": { "@type": "Organization", "name": "올바른 유품정리" },
     "publisher": { "@type": "Organization", "name": "올바른 유품정리" },
     "mainEntityOfPage": "https://www.yupum.allbarunclean.com/reviews/gangdong/",
-    "dateModified": "2026-08-26"
+    "dateModified": "2026-10-12"
   }
   </script>
 </head>
@@ -173,23 +187,29 @@
   <section>
     <div class="wrap">
       <div class="article-box">
-        <h1>강동구 단독주택 특수청소 작업후기</h1>
+        <h2 class="article-title">강동구 단독주택 특수청소 작업후기</h2>
         <p class="lead">일반 청소로 해결하기 어려운 오염 공간을 단계적으로 정리한 작업후기입니다.</p>
+        <ul class="case-info">
+          <li><strong>지역</strong>서울 강동구</li>
+          <li><strong>주거 형태</strong>단독주택</li>
+          <li><strong>작업 구분</strong>특수청소</li>
+        </ul>
         <p>서울 강동구 <strong>유품정리업체</strong> 올바른 유품정리에서 진행한 실제 작업후기입니다.</p>
+        <p class="local-note">강동구는 고덕·둔촌동의 재건축 신축 단지와 천호·길동의 오래된 빌라가 함께 있는 지역입니다. 같은 구 안에서도 건물 유형에 따라 엘리베이터 반출과 계단 반출이 갈려 현장 확인을 먼저 진행합니다.</p>
         <p>정리 과정에서 발생한 폐기물은 분류해 반출했고, 마무리 단계에서 공간 상태를 다시 확인했습니다.</p>
         <p>강동구 현장은 공간 사용 이력과 오염 상태를 먼저 확인했습니다. 단독주택 구조에 맞춰 작업 동선을 정한 뒤 오염 정리와 소독을 진행했습니다.</p>
 
         <div class="photo-block">
           <h2>작업 전 현장</h2>
           <div class="photo-grid">
-          <img src="/image/cases/before-050.jpg" alt="강동구 유품정리 작업 전 현장">
-          <img src="/image/cases/before-069.jpg" alt="강동구 유품정리 작업 전 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/before-050.jpg" alt="강동구 단독주택 특수청소 작업 전 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/before-069.jpg" alt="강동구 단독주택 특수청소 작업 전 현장">
           </div>
 
           <h2>작업 후 정리</h2>
           <div class="photo-grid">
-          <img src="/image/cases/after-050.jpg" alt="강동구 유품정리 작업 후 현장">
-          <img src="/image/cases/after-069.jpg" alt="강동구 유품정리 작업 후 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/after-050.jpg" alt="강동구 단독주택 특수청소 작업 후 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/after-069.jpg" alt="강동구 단독주택 특수청소 작업 후 현장">
           </div>
         </div>
 
@@ -203,6 +223,7 @@
             <a href="/#contact" class="btn btn-outline">상담 접수</a>
           </div>
         </div>
+
       </div>
     </div>
   </section>

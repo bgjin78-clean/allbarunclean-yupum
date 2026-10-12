@@ -45,7 +45,7 @@
     }
     .hero {
       padding:84px 20px 72px; color:#fff;
-      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.png") center/cover no-repeat;
+      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.jpg") center/cover no-repeat;
     }
     .hero-inner, .wrap { max-width:1180px; margin:0 auto; }
     .badge {
@@ -82,7 +82,20 @@
       background:var(--card); border:1px solid var(--line); border-radius:28px;
       padding:38px; box-shadow:0 12px 34px rgba(54,90,76,0.08);
     }
-    .article-box h1 { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .article-box .article-title { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .case-info {
+      list-style:none; margin:0 0 24px; padding:18px 22px; border-radius:16px;
+      background:var(--soft); border:1px solid var(--line);
+      display:grid; grid-template-columns:repeat(3,1fr); gap:8px 18px;
+    }
+    .case-info li { color:var(--text); font-size:15px; }
+    .case-info strong { color:var(--main); margin-right:6px; }
+    .local-note { padding-left:14px; border-left:3px solid var(--point); }
+    .sibling-reviews { margin-top:30px; }
+    .sibling-reviews h2 { color:var(--main); font-size:22px; margin:0 0 12px; }
+    .sibling-reviews ul { margin:0; padding-left:18px; }
+    .sibling-reviews li { margin-bottom:6px; }
+    .sibling-reviews a { color:var(--main); font-weight:700; text-decoration:underline; }
     .article-box .lead { color:var(--muted); font-size:17px; margin:0 0 28px; }
     .article-box p { color:var(--muted); margin:0 0 16px; }
     .photo-block { margin-top:34px; }
@@ -127,7 +140,8 @@
     }
     @media (max-width:900px) {
       .nav-links { display:none; }
-      .hero h1, .article-box h1 { font-size:30px; }
+      .hero h1, .article-box .article-title { font-size:30px; }
+      .case-info { grid-template-columns:1fr; }
       .review-grid, .photo-grid, .related-grid { grid-template-columns:1fr; }
       section { padding:58px 20px; }
       .floating-call { left:18px; right:18px; text-align:center; }
@@ -142,7 +156,7 @@
     "author": { "@type": "Organization", "name": "올바른 유품정리" },
     "publisher": { "@type": "Organization", "name": "올바른 유품정리" },
     "mainEntityOfPage": "https://www.yupum.allbarunclean.com/reviews/mapo/goinjip/",
-    "dateModified": "2026-09-10"
+    "dateModified": "2026-10-12"
   }
   </script>
 </head>
@@ -173,9 +187,15 @@
   <section>
     <div class="wrap">
       <div class="article-box">
-        <h1>마포구 빌라 고인집정리 작업후기</h1>
+        <h2 class="article-title">마포구 빌라 고인집정리 작업후기</h2>
         <p class="lead">마포구 빌라에서 고인의 살림살이와 생활 공간을 함께 비운 고인집정리 현장입니다.</p>
+        <ul class="case-info">
+          <li><strong>지역</strong>서울 마포구</li>
+          <li><strong>주거 형태</strong>빌라</li>
+          <li><strong>작업 구분</strong>고인집정리</li>
+        </ul>
         <p>서울 마포구 <strong>유품정리업체</strong> 올바른 유품정리에서 진행한 실제 작업후기입니다.</p>
+        <p class="local-note">마포구는 합정·망원·연남동의 원룸·빌라와 공덕·상암동의 아파트·오피스텔이 혼재된 지역입니다. 공간 구조가 다양해 같은 평수라도 반출 방식과 작업 시간이 크게 달라질 수 있습니다.</p>
         <p>마포구 연남·성산 인근 빌라 고인집정리 현장이었습니다. 원룸·오피스텔과 달리 방이 나뉘어 있고 계단 반출이라, 집 전체를 비우는 순서를 층과 방 기준으로 잡았습니다.</p>
         <p>고인집정리는 유품 확인 후 주방, 화장실, 베란다까지 살림을 걷어내는 작업이었습니다. 가족분이 남기실 물건은 현관 쪽에 모아 두었고, 나머지는 폐기·기부로 나눠 반출했습니다.</p>
         <p>골목 주차가 어려워 차량을 가까운 공터에 두고 소량씩 옮겼습니다. 마포구 고인집정리는 건물 구조보다 반출 동선이 작업 시간을 좌우했습니다.</p>
@@ -183,14 +203,14 @@
         <div class="photo-block">
           <h2>작업 전 현장</h2>
           <div class="photo-grid">
-          <img src="/image/cases/before-033.jpg" alt="마포구 고인집정리 작업 전 현장">
-          <img src="/image/cases/before-057.jpg" alt="마포구 고인집정리 작업 전 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/before-033.jpg" alt="마포구 빌라 고인집정리 작업 전 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/before-057.jpg" alt="마포구 빌라 고인집정리 작업 전 현장">
           </div>
 
           <h2>작업 후 정리</h2>
           <div class="photo-grid">
-          <img src="/image/cases/after-033.jpg" alt="마포구 고인집정리 작업 후 현장">
-          <img src="/image/cases/after-057.jpg" alt="마포구 고인집정리 작업 후 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/after-033.jpg" alt="마포구 빌라 고인집정리 작업 후 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/after-057.jpg" alt="마포구 빌라 고인집정리 작업 후 현장">
           </div>
         </div>
 
@@ -203,6 +223,14 @@
             <a href="/reviews/" class="btn btn-outline">작업후기 목록</a>
             <a href="/#contact" class="btn btn-outline">상담 접수</a>
           </div>
+        </div>
+
+        <div class="sibling-reviews">
+          <h2>마포구 다른 작업후기</h2>
+          <ul>
+            <li><a href="/reviews/mapo/">마포구 오피스텔 유품정리·특수청소 작업후기</a> · 유품정리 + 특수청소</li>
+            <li><a href="/reviews/mapo/yupum/">마포구 오피스텔 유품정리 작업후기</a> · 유품정리</li>
+          </ul>
         </div>
       </div>
     </div>

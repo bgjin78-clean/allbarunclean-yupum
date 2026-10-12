@@ -45,7 +45,7 @@
     }
     .hero {
       padding:84px 20px 72px; color:#fff;
-      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.png") center/cover no-repeat;
+      background:linear-gradient(120deg,rgba(54,90,76,0.95),rgba(97,120,107,0.82)), url("/yupum-main.jpg") center/cover no-repeat;
     }
     .hero-inner, .wrap { max-width:1180px; margin:0 auto; }
     .badge {
@@ -82,7 +82,20 @@
       background:var(--card); border:1px solid var(--line); border-radius:28px;
       padding:38px; box-shadow:0 12px 34px rgba(54,90,76,0.08);
     }
-    .article-box h1 { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .article-box .article-title { margin:0 0 14px; color:var(--main); font-size:34px; line-height:1.3; letter-spacing:-1px; }
+    .case-info {
+      list-style:none; margin:0 0 24px; padding:18px 22px; border-radius:16px;
+      background:var(--soft); border:1px solid var(--line);
+      display:grid; grid-template-columns:repeat(3,1fr); gap:8px 18px;
+    }
+    .case-info li { color:var(--text); font-size:15px; }
+    .case-info strong { color:var(--main); margin-right:6px; }
+    .local-note { padding-left:14px; border-left:3px solid var(--point); }
+    .sibling-reviews { margin-top:30px; }
+    .sibling-reviews h2 { color:var(--main); font-size:22px; margin:0 0 12px; }
+    .sibling-reviews ul { margin:0; padding-left:18px; }
+    .sibling-reviews li { margin-bottom:6px; }
+    .sibling-reviews a { color:var(--main); font-weight:700; text-decoration:underline; }
     .article-box .lead { color:var(--muted); font-size:17px; margin:0 0 28px; }
     .article-box p { color:var(--muted); margin:0 0 16px; }
     .photo-block { margin-top:34px; }
@@ -127,7 +140,8 @@
     }
     @media (max-width:900px) {
       .nav-links { display:none; }
-      .hero h1, .article-box h1 { font-size:30px; }
+      .hero h1, .article-box .article-title { font-size:30px; }
+      .case-info { grid-template-columns:1fr; }
       .review-grid, .photo-grid, .related-grid { grid-template-columns:1fr; }
       section { padding:58px 20px; }
       .floating-call { left:18px; right:18px; text-align:center; }
@@ -142,7 +156,7 @@
     "author": { "@type": "Organization", "name": "올바른 유품정리" },
     "publisher": { "@type": "Organization", "name": "올바른 유품정리" },
     "mainEntityOfPage": "https://www.yupum.allbarunclean.com/reviews/gapyeong/",
-    "dateModified": "2026-08-26"
+    "dateModified": "2026-10-12"
   }
   </script>
 </head>
@@ -173,23 +187,29 @@
   <section>
     <div class="wrap">
       <div class="article-box">
-        <h1>가평군 고독사 특수청소 작업후기</h1>
+        <h2 class="article-title">가평군 고독사 특수청소 작업후기</h2>
         <p class="lead">오염 정리, 소독, 폐기물 반출까지 현장 상황에 맞춰 진행한 작업후기입니다.</p>
+        <ul class="case-info">
+          <li><strong>지역</strong>경기 가평군</li>
+          <li><strong>주거 형태</strong>단독주택</li>
+          <li><strong>작업 구분</strong>고독사청소</li>
+        </ul>
         <p>경기 가평군 <strong>유품정리업체</strong> 올바른 유품정리에서 진행한 실제 작업후기입니다.</p>
+        <p class="local-note">가평군은 가평읍·청평면·설악면 일대 전원주택과 별장형 주택이 많은 지역입니다. 산간 도로와 비포장 진입로가 있어 차량 진입 여부를 사진과 주소로 먼저 확인합니다.</p>
+        <p>오염이 스며든 침구와 바닥재는 밀봉해 먼저 반출했고, 남은 공간은 소독과 냄새 저감 작업을 반복했습니다. 이웃 세대에 냄새가 퍼지지 않도록 출입구와 복도 쪽을 먼저 차단한 뒤 작업했습니다.</p>
         <p>물품 정리와 폐기물 반출을 진행한 후 필요한 특수청소·소독 작업을 마무리했습니다. 작업 전후 상태를 확인하며 진행했습니다.</p>
-        <p>가평군 단독주택 현장은 일반 정리와는 다른 절차가 필요한 경우였습니다. 오염 범위를 확인한 뒤 정리 순서와 소독·냄새 저감 작업 범위를 먼저 안내했습니다.</p>
 
         <div class="photo-block">
           <h2>작업 전 현장</h2>
           <div class="photo-grid">
-          <img src="/image/cases/before-091.jpg" alt="가평군 유품정리 작업 전 현장">
-          <img src="/image/cases/before-050.jpg" alt="가평군 유품정리 작업 전 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/before-091.jpg" alt="가평군 단독주택 고독사청소 작업 전 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/before-050.jpg" alt="가평군 단독주택 고독사청소 작업 전 현장">
           </div>
 
           <h2>작업 후 정리</h2>
           <div class="photo-grid">
-          <img src="/image/cases/after-091.jpg" alt="가평군 유품정리 작업 후 현장">
-          <img src="/image/cases/after-050.jpg" alt="가평군 유품정리 작업 후 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/after-091.jpg" alt="가평군 단독주택 고독사청소 작업 후 현장">
+          <img loading="lazy" decoding="async" src="/image/cases/after-050.jpg" alt="가평군 단독주택 고독사청소 작업 후 현장">
           </div>
         </div>
 
@@ -203,6 +223,7 @@
             <a href="/#contact" class="btn btn-outline">상담 접수</a>
           </div>
         </div>
+
       </div>
     </div>
   </section>

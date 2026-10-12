@@ -1,0 +1,6 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/regions_backup/:path*", "destination": "/regions/:path*", "permanent": true }
+  ]
+}
